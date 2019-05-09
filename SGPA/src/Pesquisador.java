@@ -1,6 +1,6 @@
 
-public class Pesquisador extends Orientandos{
+public class Pesquisador extends Colaborador {
 
-	// 
+	// Define somente o tipo.
 	
 }

@@ -1,8 +1,10 @@
 // import java.io.Console;
-import java.util.Scanner;
+import java.util.*;
 
 public class Programa {
 
+	static List listaColaboradores = new ArrayList();
+	
 	static Scanner ler = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -35,7 +37,7 @@ public class Programa {
 
 	        switch ( opcao ) {
 	            case 1 :
-	            	cadastrarColaborador();
+	            	cadastrar();
 	                break;
 	            case 2 :
 	            	
@@ -67,7 +69,7 @@ public class Programa {
 	    } while( opcao != 0 );		
 	}
 
-	public static void cadastrarColaborador() {
+	public static void cadastrarColaborador(Colaborador colaborador) {
 		
 		System.out.println("Nome: ");
 		String nome = ler.next();
@@ -75,9 +77,60 @@ public class Programa {
 		String email = ler.next();
 		
 		// Lista de projetos
-		// Lista de publicações
+		
+		// Lista de producao academica
 		
 		// 
+		
+	}
+	
+	public static void cadastrar() {
+		
+		System.out.println("1. Graduando");
+		System.out.println("2. Mestrando");
+		System.out.println("3. Pesquisador");
+		System.out.println("4. Professor");
+
+		int opcao = ler.nextInt();
+		
+		switch ( opcao ) {
+			case 1:
+				Graduando graduando = new Graduando();
+				cadastrarColaborador(graduando);
+				break;
+			case 2:
+				Mestrando mestrando= new Mestrando();
+				cadastrarColaborador(mestrando);
+				break;
+			case 3:
+				Pesquisador pesquisador = new Pesquisador();
+				cadastrarColaborador(pesquisador);
+				break;
+			case 4:
+				Professor professor = new Professor();
+				cadastrarColaborador(professor);
+				break;
+		}
+		
+	}
+	
+	public static void editarColaborador() {
+		
+		System.out.println("Digite a ID do Colaborador: ");
+		int id = ler.nextInt();
+		
+		Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
+		
+		Collection colaboradores = colaborador.getColaborador;
+		Iterator i = colaborador.iterator();
+		
+		while ( i.hasNext() ) {
+			Colaborador evento = (Colaborador)i.next();
+			
+			if ( evento instanceof Tarefa ) {
+				System.out.println(evento.imprimir());
+			}
+		}
 		
 	}
 	

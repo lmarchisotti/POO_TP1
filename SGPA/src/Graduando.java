@@ -1,6 +1,6 @@
 
-public class Graduando extends Orientandos {
+public class Graduando extends Alunos {
 
-	// 
-	
+	// Define somente o tipo.
+
 }
