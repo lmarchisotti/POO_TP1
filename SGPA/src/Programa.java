@@ -77,10 +77,14 @@ public class Programa {
 		String email = ler.next();
 		
 		// Lista de projetos
-		
+		List listaProjetos = new ArrayList();
 		// Lista de producao academica
+		List listaProducaoAcademica = new ArrayList();
 		
-		// 
+		colaborador.setNome(nome);
+		colaborador.setEmail(email);
+	    
+		listaColaboradores.add((Colaborador)colaborador);
 		
 	}
 	
@@ -121,7 +125,7 @@ public class Programa {
 		
 		Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
 		
-		Collection colaboradores = colaborador.getColaborador;
+		List colaboradores = colaborador.getColaborador;
 		Iterator i = colaborador.iterator();
 		
 		while ( i.hasNext() ) {
