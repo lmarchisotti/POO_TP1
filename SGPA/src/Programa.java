@@ -40,33 +40,34 @@ public class Programa {
 	            	cadastrar();
 	                break;
 	            case 2 :
-	            	
+	            	editarColaborador();
 	                break;
 	            case 3 :
-	            	
+
 	                break;
 	            case 4 :
-	            	
+
 	                break;	          
 	            case 5 :
-	            	
+
 	                break;
 	            case 6 :
-	            	
+
 	                break;	          
 	            case 7 :
-	            	
+
 	            	break;
 	            case 8 :
-	            	
+
 	            	break;
 	            case 9 :
-	            	
+
 	            	break;
-	            	            
+
 	        }
 
-	    } while( opcao != 0 );		
+	    } while( opcao != 0 );
+
 	}
 
 	public static void cadastrarColaborador(Colaborador colaborador) {
@@ -76,16 +77,13 @@ public class Programa {
 		System.out.println("Email: ");
 		String email = ler.next();
 		
-		// Lista de projetos
-		List listaProjetos = new ArrayList();
-		// Lista de producao academica
-		List listaProducaoAcademica = new ArrayList();
-		
 		colaborador.setNome(nome);
 		colaborador.setEmail(email);
 	    
 		listaColaboradores.add((Colaborador)colaborador);
 		
+		System.out.println("Cadastrado com sucesso. ID: " + listaColaboradores.lastIndexOf(colaborador) + "\n");
+
 	}
 	
 	public static void cadastrar() {
@@ -125,17 +123,38 @@ public class Programa {
 		
 		Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
 		
-		List colaboradores = colaborador.getColaborador;
-		Iterator i = colaborador.iterator();
+		System.out.println("Nome: ");
+		String nome = ler.next();
+		System.out.println("Email: ");
+		String email = ler.next();
 		
-		while ( i.hasNext() ) {
-			Colaborador evento = (Colaborador)i.next();
-			
-			if ( evento instanceof Tarefa ) {
-				System.out.println(evento.imprimir());
-			}
-		}
+		colaborador.setNome(nome);
+		colaborador.setEmail(email);
 		
+	}
+	
+public static void cadastrarProjeto() {
+		
+		System.out.println("Professor gerente: ");
+		int professor_gerente = ler.nextInt();
+		
+		System.out.println("Titulo: ");
+		String titulo = ler.next();
+		System.out.println("Objetivo: ");
+		String objetivo = ler.next();
+		System.out.println("Descricao: ");
+		String descricao = ler.next();
+		System.out.println("Financiadora: ");
+		String financiadora = ler.next();
+		System.out.println("Valor financiado: ");
+		int valor_financiado = ler.nextInt();
+		System.out.println("Data inicio: ");
+		String data_ini = ler.next();
+		System.out.println("Data termino: ");
+		String data_fim = ler.next();
+		
+		
+
 	}
 	
 }

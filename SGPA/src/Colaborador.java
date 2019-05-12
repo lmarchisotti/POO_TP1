@@ -1,6 +1,11 @@
+import java.util.*;
+
 
 public class Colaborador {
 
+	private Collection listaProjetos = new ArrayList();
+	private Collection listaProducaoAcademica = new ArrayList();
+	
 	private String nome, email;
 
 	public String getNome() {
@@ -17,6 +22,22 @@ public class Colaborador {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Collection getListaProjetos() {
+		return listaProjetos;
+	}
+
+	public void setListaProjetos(Collection listaProjetos) {
+		this.listaProjetos = listaProjetos;
+	}
+
+	public Collection getListaProducaoAcademica() {
+		return listaProducaoAcademica;
+	}
+
+	public void setListaProducaoAcademica(Collection listaProducaoAcademica) {
+		this.listaProducaoAcademica = listaProducaoAcademica;
 	}
 	
 	public String imprimir() {
