@@ -38,16 +38,16 @@ public class Laboratorio {
 
 	        switch ( opcao ) {
 	            case 1 :
-	            	cadastrar();
+	            	cadastrarColaborador();
 	                break;
 	            case 2 :
 	            	editarColaborador();
 	                break;
 	            case 3 :
-
+	            	cadastrarProjeto();
 	                break;
 	            case 4 :
-
+	            	editarProjeto();
 	                break;	          
 	            case 5 :
 
@@ -71,7 +71,7 @@ public class Laboratorio {
 
 	}
 
-	public static void cadastrarColaborador(Colaborador colaborador) {
+	public static void cadastrar(Colaborador colaborador) {
 		
 		System.out.println("Nome: ");
 		String nome = ler.next();
@@ -87,7 +87,7 @@ public class Laboratorio {
 
 	}
 	
-	public static void cadastrar() {
+	public static void cadastrarColaborador() {
 		
 		System.out.println("1. Graduando");
 		System.out.println("2. Mestrando");
@@ -99,19 +99,19 @@ public class Laboratorio {
 		switch ( opcao ) {
 			case 1:
 				Graduando graduando = new Graduando();
-				cadastrarColaborador(graduando);
+				cadastrar(graduando);
 				break;
 			case 2:
 				Mestrando mestrando= new Mestrando();
-				cadastrarColaborador(mestrando);
+				cadastrar(mestrando);
 				break;
 			case 3:
 				Pesquisador pesquisador = new Pesquisador();
-				cadastrarColaborador(pesquisador);
+				cadastrar(pesquisador);
 				break;
 			case 4:
 				Professor professor = new Professor();
-				cadastrarColaborador(professor);
+				cadastrar(professor);
 				break;
 		}
 		
@@ -141,7 +141,7 @@ public class Laboratorio {
 		System.out.println("ID do Professor gerente: ");
 		int professor_gerente = ler.nextInt();
 		
-		if (professor_gerente >= professor_gerente) { // Esse IF está ERRADO! Deve comparar se é um professor.
+		if (true) { // Esse IF está ERRADO! Deve comparar se é um professor.
 			projeto.addParticipante((Colaborador)listaColaboradores.get(professor_gerente));
 			
 			int op;
@@ -218,10 +218,16 @@ public class Laboratorio {
 			projeto.setStatus("Em elaboração");
 			
 			listaProjetos.add(projeto);
-		}else {
-			System.out.println("ID inválida.");
-		}
+		}//else {
+			//System.out.println("ID inválida.");
+		//}
 	
+	}
+	
+	public static void editarProjeto() {
+		
+		//
+		
 	}
 	
 }
