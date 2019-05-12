@@ -1,9 +1,10 @@
 // import java.io.Console;
 import java.util.*;
 
-public class Programa {
+public class Laboratorio {
 
 	static List listaColaboradores = new ArrayList();
+	static List listaProjetos = new ArrayList();
 	
 	static Scanner ler = new Scanner(System.in);
 	
@@ -80,7 +81,7 @@ public class Programa {
 		colaborador.setNome(nome);
 		colaborador.setEmail(email);
 	    
-		listaColaboradores.add((Colaborador)colaborador);
+		listaColaboradores.add(colaborador);
 		
 		System.out.println("Cadastrado com sucesso. ID: " + listaColaboradores.lastIndexOf(colaborador) + "\n");
 
@@ -133,28 +134,94 @@ public class Programa {
 		
 	}
 	
-public static void cadastrarProjeto() {
+	public static void cadastrarProjeto() {
 		
-		System.out.println("Professor gerente: ");
+		Projeto projeto = new Projeto();
+		
+		System.out.println("ID do Professor gerente: ");
 		int professor_gerente = ler.nextInt();
 		
-		System.out.println("Titulo: ");
-		String titulo = ler.next();
-		System.out.println("Objetivo: ");
-		String objetivo = ler.next();
-		System.out.println("Descricao: ");
-		String descricao = ler.next();
-		System.out.println("Financiadora: ");
-		String financiadora = ler.next();
-		System.out.println("Valor financiado: ");
-		int valor_financiado = ler.nextInt();
-		System.out.println("Data inicio: ");
-		String data_ini = ler.next();
-		System.out.println("Data termino: ");
-		String data_fim = ler.next();
-		
-		
-
+		if (professor_gerente >= professor_gerente) { // Esse IF está ERRADO! Deve comparar se é um professor.
+			projeto.addParticipante((Colaborador)listaColaboradores.get(professor_gerente));
+			
+			int op;
+			do {
+				System.out.println("Deseja adicionar outros participantes ao projeto?");
+				System.out.println("1. Sim");
+				System.out.println("0. Não");
+		        op = ler.nextInt();
+				if (op == 1) {
+					System.out.println("1. Graduando");
+					System.out.println("2. Mestrando");
+					System.out.println("3. Pesquisador");
+					System.out.println("4. Professor");
+					op = ler.nextInt();
+					switch ( op ) {
+						case 1:
+							System.out.println("ID do Graduando: ");
+							int graduando = ler.nextInt();
+							
+							if ((Colaborador)listaColaboradores.get(graduando) != null) { // Deve comparar se é do tipo correto.
+								projeto.addParticipante((Colaborador)listaColaboradores.get(graduando));
+							}
+							break;
+						case 2:
+							System.out.println("ID do Mestrando: ");
+							int mestrando = ler.nextInt();
+							
+							if ((Colaborador)listaColaboradores.get(mestrando) != null) { // Deve comparar se é do tipo correto.
+								projeto.addParticipante((Colaborador)listaColaboradores.get(mestrando));
+							}
+							break;
+						case 3:
+							System.out.println("ID do Pesquisador: ");
+							int pesquisador = ler.nextInt();
+							
+							if ((Colaborador)listaColaboradores.get(pesquisador) != null) { // Deve comparar se é do tipo correto.
+								projeto.addParticipante((Colaborador)listaColaboradores.get(pesquisador));
+							}
+							break;
+						case 4:
+							System.out.println("ID do Professor: ");
+							int professor = ler.nextInt();
+							
+							if ((Colaborador)listaColaboradores.get(professor) != null) { // Deve comparar se é do tipo correto.
+								projeto.addParticipante((Colaborador)listaColaboradores.get(professor));
+							}
+							break;
+					}
+				}
+			}while (op != 0);
+			
+			System.out.println("Titulo: ");
+			String titulo = ler.next();
+			System.out.println("Objetivo: ");
+			String objetivo = ler.next();
+			System.out.println("Descricao: ");
+			String descricao = ler.next();
+			System.out.println("Financiadora: ");
+			String financiadora = ler.next();
+			System.out.println("Valor financiado: ");
+			int valor_financiado = ler.nextInt();
+			System.out.println("Data inicio: ");
+			String data_ini = ler.next();
+			System.out.println("Data termino: ");
+			String data_fim = ler.next();
+			
+			projeto.setTitulo(titulo);
+			projeto.setObjetivo(objetivo);
+			projeto.setDescricao(descricao);
+			projeto.setFinanciadora(financiadora);
+			projeto.setValor_financiado(valor_financiado);
+			projeto.setData_ini(data_ini);
+			projeto.setData_fim(data_fim);
+			projeto.setStatus("Em elaboração");
+			
+			listaProjetos.add(projeto);
+		}else {
+			System.out.println("ID inválida.");
+		}
+	
 	}
 	
 }

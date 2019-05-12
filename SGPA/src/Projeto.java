@@ -1,8 +1,19 @@
+import java.util.*;
 
 public class Projeto {
 
+	private static List listaParticipantes = new ArrayList();
+	
 	private String titulo, financiadora, objetivo, descricao, data_ini, data_fim, status;
 	private int valor_financiado;
+	
+	public static List getListaParticipantes() {
+		return listaParticipantes;
+	}
+
+	public void addParticipante(Colaborador colaborador) {
+		listaParticipantes.add(colaborador);
+	}
 	
 	public String getTitulo() {
 		return titulo;

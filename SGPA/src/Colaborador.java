@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class Colaborador {
 
 	private Collection listaProjetos = new ArrayList();
