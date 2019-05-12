@@ -143,6 +143,7 @@ public class Laboratorio {
 		
 		if (true) { // Esse IF está ERRADO! Deve comparar se é um professor.
 			projeto.addParticipante((Colaborador)listaColaboradores.get(professor_gerente));
+			projeto.setProfessorGerente(professor_gerente);
 			
 			int op;
 			do {
@@ -226,7 +227,99 @@ public class Laboratorio {
 	
 	public static void editarProjeto() {
 		
-		//
+		System.out.println("ID do Projeto: ");
+		int id = ler.nextInt();
+		
+		Projeto projeto = (Projeto)listaProjetos.get(id);
+		
+		if (projeto != null) {
+			
+			System.out.println("ID do Professor gerente deste projeto: ");
+			int id_profGerente = ler.nextInt();
+			
+			if (id_profGerente == projeto.getProfessorGerente()) {
+				
+				int op;
+				do {
+					System.out.println("Titulo: " + projeto.getTitulo() + "\n" +
+										"Objetivo: " + projeto.getObjetivo() + "\n" +
+										"Descricao: " + projeto.getDescricao() + "\n" +
+										"Financiadora: " + projeto.getFinanciadora() + "\n" +
+										"Valor financiado: " + projeto.getValor_financiado() + "\n" +
+										"Data inicio: " + projeto.getData_ini() + "\n" +
+										"Data termino: " + projeto.getData_fim() + "\n" +
+										"Status: " + projeto.getStatus() + "\n");
+					System.out.println("O que deseja modificar?");
+					System.out.println("1. Titulo");
+					System.out.println("2. Objetivo");
+					System.out.println("3. Descricao");
+					System.out.println("4. Financiadora");
+					System.out.println("5. Valor financiado");
+					System.out.println("6. Data inicio");
+					System.out.println("7. Data termino");
+					System.out.println("8. Status");
+					System.out.println("0. Sair");
+					op = ler.nextInt();
+					
+					switch ( op ) {
+						case 1:
+							System.out.println("Titulo: ");
+							String titulo = ler.next();
+							
+							projeto.setTitulo(titulo);
+							break;
+						case 2:
+							System.out.println("Objetivo: ");
+							String objetivo = ler.next();
+							
+							projeto.setObjetivo(objetivo);
+							break;
+						case 3:
+							System.out.println("Descricao: ");
+							String descricao = ler.next();
+							
+							projeto.setDescricao(descricao);
+							break;
+						case 4:
+							System.out.println("Financiadora: ");
+							String financiadora = ler.next();
+							
+							projeto.setFinanciadora(financiadora);
+							break;
+						case 5:
+							System.out.println("Valor financiado: ");
+							int valor_financiado = ler.nextInt();
+							
+							projeto.setValor_financiado(valor_financiado);
+							break;
+						case 6:
+							System.out.println("Data inicio: ");
+							String data_ini = ler.next();
+							
+							projeto.setData_ini(data_ini);
+							break;
+						case 7:
+							System.out.println("Data termino: ");
+							String data_fim = ler.next();
+							
+							projeto.setData_fim(data_fim);
+							break;
+						case 8:
+							// Deve testar se todos os campos estão preenchidos antes de alterar
+							
+							System.out.println("Status: ");
+							String status = ler.next();
+							
+							projeto.setStatus(status);
+							break;
+					}
+				}while (op != 0);
+				
+			}else {
+				System.out.println("Professor gerente incorreto.");
+			}
+			
+		}
 		
 	}
 	

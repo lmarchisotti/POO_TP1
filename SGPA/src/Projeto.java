@@ -5,9 +5,17 @@ public class Projeto {
 	private static List listaParticipantes = new ArrayList();
 	
 	private String titulo, financiadora, objetivo, descricao, data_ini, data_fim, status;
-	private int valor_financiado;
+	private int valor_financiado, professorGerente;
 	
-	public static List getListaParticipantes() {
+	public int getProfessorGerente() {
+		return professorGerente;
+	}
+	
+	public void setProfessorGerente(int professorGerente) {
+		this.professorGerente = professorGerente;
+	}
+	
+	public List getListaParticipantes() {
 		return listaParticipantes;
 	}
 
