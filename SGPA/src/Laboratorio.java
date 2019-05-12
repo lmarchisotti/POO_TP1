@@ -141,7 +141,7 @@ public class Laboratorio {
 		System.out.println("ID do Professor gerente: ");
 		int professor_gerente = ler.nextInt();
 		
-		if (true) { // Esse IF está ERRADO! Deve comparar se é um professor.
+		if (true) { // Esse IF está ERRADO! Deve verificar se é do tipo professor.
 			projeto.addParticipante((Colaborador)listaColaboradores.get(professor_gerente));
 			projeto.setProfessorGerente(professor_gerente);
 			
@@ -164,6 +164,8 @@ public class Laboratorio {
 							
 							if ((Colaborador)listaColaboradores.get(graduando) != null) { // Deve comparar se é do tipo correto.
 								projeto.addParticipante((Colaborador)listaColaboradores.get(graduando));
+							} else {
+								System.out.println("Este colaborador não é um Graduando.");
 							}
 							break;
 						case 2:
@@ -172,6 +174,8 @@ public class Laboratorio {
 							
 							if ((Colaborador)listaColaboradores.get(mestrando) != null) { // Deve comparar se é do tipo correto.
 								projeto.addParticipante((Colaborador)listaColaboradores.get(mestrando));
+							} else {
+								System.out.println("Este colaborador não é um Mestrando.");
 							}
 							break;
 						case 3:
@@ -180,6 +184,8 @@ public class Laboratorio {
 							
 							if ((Colaborador)listaColaboradores.get(pesquisador) != null) { // Deve comparar se é do tipo correto.
 								projeto.addParticipante((Colaborador)listaColaboradores.get(pesquisador));
+							} else {
+								System.out.println("Este colaborador não é um Pesquisador.");
 							}
 							break;
 						case 4:
@@ -188,6 +194,8 @@ public class Laboratorio {
 							
 							if ((Colaborador)listaColaboradores.get(professor) != null) { // Deve comparar se é do tipo correto.
 								projeto.addParticipante((Colaborador)listaColaboradores.get(professor));
+							} else {
+								System.out.println("Este colaborador não é um Professor.");
 							}
 							break;
 					}
@@ -219,8 +227,8 @@ public class Laboratorio {
 			projeto.setStatus("Em elaboração");
 			
 			listaProjetos.add(projeto);
-		}//else {
-			//System.out.println("ID inválida.");
+		}// else {
+			//System.out.println("Este colaborador não é um Professor.");
 		//}
 	
 	}
@@ -306,6 +314,7 @@ public class Laboratorio {
 							break;
 						case 8:
 							// Deve testar se todos os campos estão preenchidos antes de alterar
+							// (Perguntar para o Elder se esse teste não é inútil, já que é impossível - dado a maneira que foi feito esse código - não preencher todos os campos)
 							
 							System.out.println("Status: ");
 							String status = ler.next();
