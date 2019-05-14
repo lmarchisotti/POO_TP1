@@ -21,7 +21,7 @@ public class Laboratorio {
 	        System.out.println("|------------------------------------|");
 	        System.out.println("| 4 - Cadastrar Projeto              |");
 	        System.out.println("| 5 - Editar Projeto                 |");
-	        System.out.println("| 6 - Listar Projeto                 |");
+	        System.out.println("| 6 - Listar Projetos                |");
 	        System.out.println("|------------------------------------|");
 	        System.out.println("| 7 - Cadastrar Publicacao           |");
 	        System.out.println("| 8 - Editar Publicacao              |");
