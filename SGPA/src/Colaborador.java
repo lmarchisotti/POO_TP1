@@ -31,7 +31,7 @@ public class Colaborador {
 		listaProjetos.add(idProjeto);
 	}
 
-	public Collection getListaProducaoAcademica() {
+	public List getListaProducaoAcademica() {
 		return listaProducaoAcademica;
 	}
 
