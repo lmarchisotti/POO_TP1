@@ -35,8 +35,8 @@ public class Colaborador {
 		return listaProducaoAcademica;
 	}
 
-	public void setListaProducaoAcademica(List listaProducaoAcademica) {
-		this.listaProducaoAcademica = listaProducaoAcademica;
+	public void addListaProducaoAcademica(int idListaProducaoAcademica) {
+		listaProducaoAcademica.add(idListaProducaoAcademica);
 	}
 	
 	public String imprimir() {

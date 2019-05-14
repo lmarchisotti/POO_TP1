@@ -311,9 +311,15 @@ public class Laboratorio {
 							// (Perguntar para o Elder se esse teste não é inútil, já que é impossível - dado a maneira que foi feito esse código - não preencher todos os campos)
 							
 							System.out.println("Status: ");
-							String status = ler.next();
+							System.out.println("1. Em andamento");
+							System.out.println("2. Concluido");
+							int status = ler.nextInt();
 							
-							projeto.setStatus(status);
+							if (status == 1) {
+								projeto.setStatus("Em andamento");
+							} else {
+								projeto.setStatus("Concluido");
+							}
 							break;
 						case 9:
 							if (projeto.getStatus() == "Em elaboracao") {
@@ -326,6 +332,8 @@ public class Laboratorio {
 									case 1:
 										System.out.println("ID do Graduando: ");
 										int graduando = ler.nextInt();
+										
+										// Testar se o graduando está em dois projetos 'em andamento'.
 										
 										if (listaColaboradores.contains(graduando)) {
 											if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
