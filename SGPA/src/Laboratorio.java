@@ -130,7 +130,7 @@ public class Laboratorio {
 		System.out.println("Digite a ID do Colaborador: ");
 		int id = ler.nextInt();
 		
-		Colaborador colaborador =  (Colaborador)listaColaboradores.get(id);
+		Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
 		
 		System.out.println("Nome: ");
 		String nome = ler.next();
@@ -144,10 +144,14 @@ public class Laboratorio {
 	
 	public static void listarColaboradores() {
 		
-		for (int i = 0; i < listaColaboradores.size(); i++) {
-			Colaborador colaborador = (Colaborador)listaColaboradores.get(i);
-			
-			System.out.println("ID: " + i + "|" + "Nome: " + colaborador.getNome() + "\n");
+		if (listaColaboradores.size() > 0) {
+			for (int i = 0; i < listaColaboradores.size(); i++) {
+				Colaborador colaborador = (Colaborador)listaColaboradores.get(i);
+				
+				System.out.println("ID: " + i + "|" + "Nome: " + colaborador.getNome() + "\n");
+			}
+		} else {
+			System.out.println("Não há colaboradores cadastrados.");
 		}
 		
 	}
@@ -369,11 +373,16 @@ public class Laboratorio {
 	
 	public static void listarProjetos() {
 		
-		for (int i = 0; i < listaColaboradores.size(); i++) {
-			Projeto projeto = (Projeto)listaProjetos.get(i);
-			
-			System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
+		if (listaColaboradores.size() > 0) {
+			for (int i = 0; i < listaColaboradores.size(); i++) {
+				Projeto projeto = (Projeto)listaProjetos.get(i);
+				
+				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
+			}
+		} else {
+			System.out.println("Não há projetos cadastrados.");
 		}
+		
 		
 	}
 	
