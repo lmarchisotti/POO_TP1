@@ -157,7 +157,7 @@ public class Laboratorio {
 				System.out.println("ID: " + i + "|" + "Nome: " + colaborador.getNome() + "\n");
 			}
 		} else {
-			System.out.println("Não há colaboradores cadastrados.");
+			System.out.println("Nao ha colaboradores cadastrados.");
 		}
 		
 	}
@@ -204,12 +204,12 @@ public class Laboratorio {
 				Colaborador colaborador = (Colaborador)listaColaboradores.get(professor_gerente);
 				colaborador.addListaProjetos(listaProjetos.lastIndexOf(projeto));
 			} else {
-				System.out.println("Este colaborador não é um Professor.");
+				System.out.println("Este colaborador nao e' um Professor.");
 			}
 			
 		}else {
 			if (listaColaboradores.size() == 0) {
-				System.out.println("Não há colaboradores cadastrados.");
+				System.out.println("Nao ha colaboradores cadastrados.");
 			} else {
 				System.out.println("ID inexistente.");
 			}
@@ -298,13 +298,13 @@ public class Laboratorio {
 							System.out.println("Data inicio: ");
 							String data_ini = ler.next();
 							
-							projeto.setData_ini(data_ini);
+							projeto.setData_ini(data_ini); // Converter string data, para modo data
 							break;
 						case 7:
 							System.out.println("Data termino: ");
 							String data_fim = ler.next();
 							
-							projeto.setData_fim(data_fim);
+							projeto.setData_fim(data_fim); // Converter string data, para modo data
 							break;
 						case 8:
 							// Deve testar se todos os campos estão preenchidos antes de alterar
@@ -342,7 +342,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Graduando.");
+												System.out.println("Este colaborador nao e' um Graduando.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -359,7 +359,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Mestrando.");
+												System.out.println("Este colaborador nao e' um Mestrando.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -376,7 +376,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Pesquisador.");
+												System.out.println("Este colaborador nao e' um Pesquisador.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -393,7 +393,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Professor.");
+												System.out.println("Este colaborador nao e' um Professor.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -401,19 +401,19 @@ public class Laboratorio {
 										break;
 								}
 							} else {
-								System.out.println("Projeto já passou o estágio de 'Em elaboração'.");
+								System.out.println("Projeto ja passou do estagio de 'Em elaboracao'.");
 							}
 							break;
 					}
 				}while (op != 0);
 				
 			} else {
-				System.out.println("Não é o professor gerente deste projeto.");
+				System.out.println("Nao e' o professor gerente deste projeto.");
 			}
 			
 		} else {
 			if (listaProjetos.size() == 0) {
-				System.out.println("Não existe projeto cadastrado.");
+				System.out.println("Nao existem projetos cadastrados.");
 			} else {
 				System.out.println("Projeto inexistente.");
 			}
@@ -430,9 +430,15 @@ public class Laboratorio {
 				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
 			}
 		} else {
-			System.out.println("Não há projetos cadastrados.");
+			System.out.println("Nao existem projetos cadastrados.");
 		}
 		
+		
+	}
+	
+	public static void cadastrarPublicacao() {
+		
+		//
 		
 	}
 	
