@@ -130,8 +130,8 @@ public class Laboratorio {
 		System.out.println("Digite a ID do Colaborador: ");
 		int id = ler.nextInt();
 		
-		if (id <= listaColaboradores.size()) { // Deve verificar se o ID digitado se encontra dentro da lista.
-			
+		if (listaColaboradores.contains(id)) {
+
 			Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
 			
 			System.out.println("Nome: ");
@@ -169,7 +169,7 @@ public class Laboratorio {
 		System.out.println("ID do Professor gerente: ");
 		int professor_gerente = ler.nextInt();
 		
-		if (professor_gerente <= listaColaboradores.size()) {
+		if (listaColaboradores.contains(professor_gerente)) {
 			
 			if ((Colaborador)listaColaboradores.get(professor_gerente) instanceof Professor) {
 				projeto.addParticipante(professor_gerente);
@@ -208,7 +208,11 @@ public class Laboratorio {
 			}
 			
 		}else {
-			System.out.println("ID inexistente.");
+			if (listaColaboradores.size() == 0) {
+				System.out.println("Não há colaboradores cadastrados.");
+			} else {
+				System.out.println("ID inexistente.");
+			}
 		}
 
 	}
@@ -218,201 +222,201 @@ public class Laboratorio {
 		System.out.println("ID do Projeto: ");
 		int id = ler.nextInt();
 		
-		if (id <= listaProjetos.size()) { // Deve verificar se o ID digitado se encontra dentro da lista.
+		if (listaProjetos.contains(id)) {
 			
 			Projeto projeto = (Projeto)listaProjetos.get(id);
+				
+			System.out.println("ID do Professor gerente deste projeto: ");
+			int id_profGerente = ler.nextInt();
 			
-			if (projeto != null) {
+			if (id_profGerente == projeto.getProfessorGerente()) {
 				
-				System.out.println("ID do Professor gerente deste projeto: ");
-				int id_profGerente = ler.nextInt();
-				
-				if (id_profGerente == projeto.getProfessorGerente()) {
+				int op;
+				do {
+					System.out.println("Titulo: " + projeto.getTitulo() + "\n" +
+										"Objetivo: " + projeto.getObjetivo() + "\n" +
+										"Descricao: " + projeto.getDescricao() + "\n" +
+										"Financiadora: " + projeto.getFinanciadora() + "\n" +
+										"Valor financiado: " + projeto.getValor_financiado() + "\n" +
+										"Data inicio: " + projeto.getData_ini() + "\n" +
+										"Data termino: " + projeto.getData_fim() + "\n" +
+										"Status: " + projeto.getStatus() + "\n");
+					System.out.println("Participantes: ");
+					for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
+						int participante = (int)projeto.getListaParticipantes().get(i);
+						
+						Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
+						System.out.println("Nome: " + colaborador.getNome() + " ");
+					}
 					
-					int op;
-					do {
-						System.out.println("Titulo: " + projeto.getTitulo() + "\n" +
-											"Objetivo: " + projeto.getObjetivo() + "\n" +
-											"Descricao: " + projeto.getDescricao() + "\n" +
-											"Financiadora: " + projeto.getFinanciadora() + "\n" +
-											"Valor financiado: " + projeto.getValor_financiado() + "\n" +
-											"Data inicio: " + projeto.getData_ini() + "\n" +
-											"Data termino: " + projeto.getData_fim() + "\n" +
-											"Status: " + projeto.getStatus() + "\n");
-						System.out.println("Participantes: ");
-						for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
-							int participante = (int)projeto.getListaParticipantes().get(i);
+					System.out.println("\n");
+					System.out.println("O que deseja modificar?");
+					System.out.println("1. Titulo");
+					System.out.println("2. Objetivo");
+					System.out.println("3. Descricao");
+					System.out.println("4. Financiadora");
+					System.out.println("5. Valor financiado");
+					System.out.println("6. Data inicio");
+					System.out.println("7. Data termino");
+					System.out.println("8. Status");
+					System.out.println("9. Adicionar particiantes");
+					System.out.println("0. Sair");
+					op = ler.nextInt();
+					
+					switch ( op ) {
+						case 1:
+							System.out.println("Titulo: ");
+							String titulo = ler.next();
 							
-							Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
-							System.out.println("Nome: " + colaborador.getNome() + " ");
-						}
-						
-						System.out.println("\n");
-						System.out.println("O que deseja modificar?");
-						System.out.println("1. Titulo");
-						System.out.println("2. Objetivo");
-						System.out.println("3. Descricao");
-						System.out.println("4. Financiadora");
-						System.out.println("5. Valor financiado");
-						System.out.println("6. Data inicio");
-						System.out.println("7. Data termino");
-						System.out.println("8. Status");
-						System.out.println("9. Adicionar particiantes");
-						System.out.println("0. Sair");
-						op = ler.nextInt();
-						
-						switch ( op ) {
-							case 1:
-								System.out.println("Titulo: ");
-								String titulo = ler.next();
-								
-								projeto.setTitulo(titulo);
-								break;
-							case 2:
-								System.out.println("Objetivo: ");
-								String objetivo = ler.next();
-								
-								projeto.setObjetivo(objetivo);
-								break;
-							case 3:
-								System.out.println("Descricao: ");
-								String descricao = ler.next();
-								
-								projeto.setDescricao(descricao);
-								break;
-							case 4:
-								System.out.println("Financiadora: ");
-								String financiadora = ler.next();
-								
-								projeto.setFinanciadora(financiadora);
-								break;
-							case 5:
-								System.out.println("Valor financiado: ");
-								int valor_financiado = ler.nextInt();
-								
-								projeto.setValor_financiado(valor_financiado);
-								break;
-							case 6:
-								System.out.println("Data inicio: ");
-								String data_ini = ler.next();
-								
-								projeto.setData_ini(data_ini);
-								break;
-							case 7:
-								System.out.println("Data termino: ");
-								String data_fim = ler.next();
-								
-								projeto.setData_fim(data_fim);
-								break;
-							case 8:
-								// Deve testar se todos os campos estão preenchidos antes de alterar
-								// (Perguntar para o Elder se esse teste não é inútil, já que é impossível - dado a maneira que foi feito esse código - não preencher todos os campos)
-								
-								System.out.println("Status: ");
-								String status = ler.next();
-								
-								projeto.setStatus(status);
-								break;
-							case 9:
-								if (projeto.getStatus() == "Em elaboracao") {
-									System.out.println("1. Graduando");
-									System.out.println("2. Mestrando");
-									System.out.println("3. Pesquisador");
-									System.out.println("4. Professor");
-									op = ler.nextInt();
-									switch ( op ) {
-										case 1:
-											System.out.println("ID do Graduando: ");
-											int graduando = ler.nextInt();
-											
-											if (graduando <= listaColaboradores.size()) {
-												if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
-													projeto.addParticipante(graduando);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Graduando.");
-												}
-											} else {
-												System.out.println("ID inexistente.");
-											}
-											break;
-										case 2:
-											System.out.println("ID do Mestrando: ");
-											int mestrando = ler.nextInt();
-											
-											if (mestrando <= listaColaboradores.size()) {
-												if ((Colaborador)listaColaboradores.get(mestrando) instanceof Mestrando) {
-													projeto.addParticipante(mestrando);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Mestrando.");
-												}
+							projeto.setTitulo(titulo);
+							break;
+						case 2:
+							System.out.println("Objetivo: ");
+							String objetivo = ler.next();
+							
+							projeto.setObjetivo(objetivo);
+							break;
+						case 3:
+							System.out.println("Descricao: ");
+							String descricao = ler.next();
+							
+							projeto.setDescricao(descricao);
+							break;
+						case 4:
+							System.out.println("Financiadora: ");
+							String financiadora = ler.next();
+							
+							projeto.setFinanciadora(financiadora);
+							break;
+						case 5:
+							System.out.println("Valor financiado: ");
+							int valor_financiado = ler.nextInt();
+							
+							projeto.setValor_financiado(valor_financiado);
+							break;
+						case 6:
+							System.out.println("Data inicio: ");
+							String data_ini = ler.next();
+							
+							projeto.setData_ini(data_ini);
+							break;
+						case 7:
+							System.out.println("Data termino: ");
+							String data_fim = ler.next();
+							
+							projeto.setData_fim(data_fim);
+							break;
+						case 8:
+							// Deve testar se todos os campos estão preenchidos antes de alterar
+							// (Perguntar para o Elder se esse teste não é inútil, já que é impossível - dado a maneira que foi feito esse código - não preencher todos os campos)
+							
+							System.out.println("Status: ");
+							String status = ler.next();
+							
+							projeto.setStatus(status);
+							break;
+						case 9:
+							if (projeto.getStatus() == "Em elaboracao") {
+								System.out.println("1. Graduando");
+								System.out.println("2. Mestrando");
+								System.out.println("3. Pesquisador");
+								System.out.println("4. Professor");
+								op = ler.nextInt();
+								switch ( op ) {
+									case 1:
+										System.out.println("ID do Graduando: ");
+										int graduando = ler.nextInt();
+										
+										if (listaColaboradores.contains(graduando)) {
+											if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
+												projeto.addParticipante(graduando);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
+												colaborador.addListaProjetos(id);
 											} else {
 												System.out.println("Este colaborador não é um Graduando.");
 											}
-											break;
-										case 3:
-											System.out.println("ID do Pesquisador: ");
-											int pesquisador = ler.nextInt();
-											
-											if (pesquisador <= listaColaboradores.size()) {
-												if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
-													projeto.addParticipante(pesquisador);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Pesquisador.");
-												}
+										} else {
+											System.out.println("ID inexistente.");
+										}
+										break;
+									case 2:
+										System.out.println("ID do Mestrando: ");
+										int mestrando = ler.nextInt();
+										
+										if (listaColaboradores.contains(mestrando)) {
+											if ((Colaborador)listaColaboradores.get(mestrando) instanceof Mestrando) {
+												projeto.addParticipante(mestrando);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
+												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Graduando.");
+												System.out.println("Este colaborador não é um Mestrando.");
 											}
-											break;
-										case 4:
-											System.out.println("ID do Professor: ");
-											int professor = ler.nextInt();
-											
-											if (professor <= listaColaboradores.size()) {
-												if ((Colaborador)listaColaboradores.get(professor) instanceof Professor) {
-													projeto.addParticipante(professor);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Professor.");
-												}
+										} else {
+											System.out.println("ID inexistente.");
+										}
+										break;
+									case 3:
+										System.out.println("ID do Pesquisador: ");
+										int pesquisador = ler.nextInt();
+										
+										if (listaColaboradores.contains(pesquisador)) {
+											if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
+												projeto.addParticipante(pesquisador);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
+												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador não é um Graduando.");
+												System.out.println("Este colaborador não é um Pesquisador.");
 											}
-											break;
-									}
-								} else {
-									System.out.println("Projeto já passou o estágio de 'Em elaboração'.");
+										} else {
+											System.out.println("ID inexistente.");
+										}
+										break;
+									case 4:
+										System.out.println("ID do Professor: ");
+										int professor = ler.nextInt();
+										
+										if (listaColaboradores.contains(professor)) {
+											if ((Colaborador)listaColaboradores.get(professor) instanceof Professor) {
+												projeto.addParticipante(professor);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
+												colaborador.addListaProjetos(id);
+											} else {
+												System.out.println("Este colaborador não é um Professor.");
+											}
+										} else {
+											System.out.println("ID inexistente.");
+										}
+										break;
 								}
-								break;
-						}
-					}while (op != 0);
-					
-				}else {
-					System.out.println("Não é o professor gerente deste projeto.");
-				}
+							} else {
+								System.out.println("Projeto já passou o estágio de 'Em elaboração'.");
+							}
+							break;
+					}
+				}while (op != 0);
 				
+			} else {
+				System.out.println("Não é o professor gerente deste projeto.");
 			}
 			
 		} else {
-			System.out.println("ID inexistente.");
+			if (listaProjetos.size() == 0) {
+				System.out.println("Não existe projeto cadastrado.");
+			} else {
+				System.out.println("Projeto inexistente.");
+			}
 		}
 		
 	}
 	
 	public static void listarProjetos() {
 		
-		if (listaColaboradores.size() > 0) {
-			for (int i = 0; i < listaColaboradores.size(); i++) {
+		if (listaProjetos.size() > 0) {
+			for (int i = 0; i < listaProjetos.size(); i++) {
 				Projeto projeto = (Projeto)listaProjetos.get(i);
 				
 				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
