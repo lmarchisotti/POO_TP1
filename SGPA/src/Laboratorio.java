@@ -33,7 +33,7 @@ public class Laboratorio {
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
 
-	        System.out.println("Escolha uma opcao: ");
+	        System.out.println("Escolha uma opcão: ");
 	        
 	        opcao = ler.nextInt();
 	        // opcao = Integer.parseInt(Console.readLine());
