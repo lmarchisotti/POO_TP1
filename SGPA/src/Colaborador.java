@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Colaborador {
 
-	private Collection listaProjetos = new ArrayList();
-	private Collection listaProducaoAcademica = new ArrayList();
+	private List listaProjetos = new ArrayList();
+	private List listaProducaoAcademica = new ArrayList();
 	
 	private String nome, email;
 
@@ -23,19 +23,19 @@ public class Colaborador {
 		this.email = email;
 	}
 	
-	public Collection getListaProjetos() {
+	public List getListaProjetos() {
 		return listaProjetos;
 	}
 
-	public void setListaProjetos(Collection listaProjetos) {
-		this.listaProjetos = listaProjetos;
+	public void addListaProjetos(int idProjeto) {
+		listaProjetos.add(idProjeto);
 	}
 
 	public Collection getListaProducaoAcademica() {
 		return listaProducaoAcademica;
 	}
 
-	public void setListaProducaoAcademica(Collection listaProducaoAcademica) {
+	public void setListaProducaoAcademica(List listaProducaoAcademica) {
 		this.listaProducaoAcademica = listaProducaoAcademica;
 	}
 	

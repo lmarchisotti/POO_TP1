@@ -14,22 +14,23 @@ public class Laboratorio {
 		
 		do {
 
-			System.out.println("=====================================");
-			System.out.println("| 1 - Cadastrar Colaborador         |");
-	        System.out.println("| 2 - Editar Colaborador            |");
-	        System.out.println("|-----------------------------------|");
-	        System.out.println("| 3 - Cadastrar Projeto             |");
-	        System.out.println("| 4 - Editar Projeto                |");
-	        System.out.println("|-----------------------------------|");
-	        System.out.println("| 5 - Cadastrar Publicacao          |");
-	        System.out.println("| 6 - Editar Publicacao             |");
-	        System.out.println("=====================================");
-	        System.out.println("| 7 - Consulta por Colaborador      |");
-	        System.out.println("| 8 - Consulta por Projeto          |");
-	        System.out.println("| 9 - Relatorio de Producao do Lab. |");
-	        System.out.println("=====================================");
-	        System.out.println("| 0 - Sair                          |");
-	        System.out.println("=====================================");
+			System.out.println("======================================");
+			System.out.println("| 1 - Cadastrar Colaborador          |");
+	        System.out.println("| 2 - Editar Colaborador             |");
+	        System.out.println("| 3 - Listar Colaboradores           |");
+	        System.out.println("|------------------------------------|");
+	        System.out.println("| 4 - Cadastrar Projeto              |");
+	        System.out.println("| 5 - Editar Projeto                 |");
+	        System.out.println("|------------------------------------|");
+	        System.out.println("| 6 - Cadastrar Publicacao           |");
+	        System.out.println("| 7 - Editar Publicacao              |");
+	        System.out.println("======================================");
+	        System.out.println("| 8 - Consulta por Colaborador       |");
+	        System.out.println("| 9 - Consulta por Projeto           |");
+	        System.out.println("| 10 - Relatorio de Producao do Lab. |");
+	        System.out.println("======================================");
+	        System.out.println("| 0 - Sair                           |");
+	        System.out.println("======================================");
 
 	        System.out.println("Escolha uma opcao: ");
 	        
@@ -44,13 +45,13 @@ public class Laboratorio {
 	            	editarColaborador();
 	                break;
 	            case 3 :
-	            	cadastrarProjeto();
+	            	listarColaboradores();
 	                break;
 	            case 4 :
-	            	editarProjeto();
+	            	cadastrarProjeto();
 	                break;	          
 	            case 5 :
-
+	            	editarProjeto();
 	                break;
 	            case 6 :
 
@@ -122,7 +123,7 @@ public class Laboratorio {
 		System.out.println("Digite a ID do Colaborador: ");
 		int id = ler.nextInt();
 		
-		Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
+		Colaborador colaborador =  (Colaborador)listaColaboradores.get(id);
 		
 		System.out.println("Nome: ");
 		String nome = ler.next();
@@ -134,6 +135,16 @@ public class Laboratorio {
 		
 	}
 	
+	public static void listarColaboradores() {
+		
+		for (int i = 0; i < listaColaboradores.size(); i++) {
+			Colaborador colaborador = (Colaborador)listaColaboradores.get(i);
+			
+			System.out.println("ID: " + i + "|" + "Nome: " + colaborador.getNome() + "\n");
+		}
+		
+	}
+	
 	public static void cadastrarProjeto() {
 		
 		Projeto projeto = new Projeto();
@@ -141,66 +152,9 @@ public class Laboratorio {
 		System.out.println("ID do Professor gerente: ");
 		int professor_gerente = ler.nextInt();
 		
-		if (true) { // Esse IF está ERRADO! Deve verificar se é do tipo professor.
-			projeto.addParticipante((Colaborador)listaColaboradores.get(professor_gerente));
+		if ((Colaborador)listaColaboradores.get(professor_gerente) instanceof Professor) {
+			projeto.addParticipante(professor_gerente);
 			projeto.setProfessorGerente(professor_gerente);
-			
-			int op;
-			do {
-				System.out.println("Deseja adicionar outros participantes ao projeto?");
-				System.out.println("1. Sim");
-				System.out.println("0. Não");
-		        op = ler.nextInt();
-				if (op == 1) {
-					System.out.println("1. Graduando");
-					System.out.println("2. Mestrando");
-					System.out.println("3. Pesquisador");
-					System.out.println("4. Professor");
-					op = ler.nextInt();
-					switch ( op ) {
-						case 1:
-							System.out.println("ID do Graduando: ");
-							int graduando = ler.nextInt();
-							
-							if ((Colaborador)listaColaboradores.get(graduando) != null) { // Deve comparar se é do tipo correto.
-								projeto.addParticipante((Colaborador)listaColaboradores.get(graduando));
-							} else {
-								System.out.println("Este colaborador não é um Graduando.");
-							}
-							break;
-						case 2:
-							System.out.println("ID do Mestrando: ");
-							int mestrando = ler.nextInt();
-							
-							if ((Colaborador)listaColaboradores.get(mestrando) != null) { // Deve comparar se é do tipo correto.
-								projeto.addParticipante((Colaborador)listaColaboradores.get(mestrando));
-							} else {
-								System.out.println("Este colaborador não é um Mestrando.");
-							}
-							break;
-						case 3:
-							System.out.println("ID do Pesquisador: ");
-							int pesquisador = ler.nextInt();
-							
-							if ((Colaborador)listaColaboradores.get(pesquisador) != null) { // Deve comparar se é do tipo correto.
-								projeto.addParticipante((Colaborador)listaColaboradores.get(pesquisador));
-							} else {
-								System.out.println("Este colaborador não é um Pesquisador.");
-							}
-							break;
-						case 4:
-							System.out.println("ID do Professor: ");
-							int professor = ler.nextInt();
-							
-							if ((Colaborador)listaColaboradores.get(professor) != null) { // Deve comparar se é do tipo correto.
-								projeto.addParticipante((Colaborador)listaColaboradores.get(professor));
-							} else {
-								System.out.println("Este colaborador não é um Professor.");
-							}
-							break;
-					}
-				}
-			}while (op != 0);
 			
 			System.out.println("Titulo: ");
 			String titulo = ler.next();
@@ -227,10 +181,13 @@ public class Laboratorio {
 			projeto.setStatus("Em elaboração");
 			
 			listaProjetos.add(projeto);
-		}// else {
-			//System.out.println("Este colaborador não é um Professor.");
-		//}
-	
+			
+			Colaborador colaborador = (Colaborador)listaColaboradores.get(professor_gerente);
+			colaborador.addListaProjetos(listaProjetos.lastIndexOf(projeto));
+		} else {
+			System.out.println("Este colaborador não é um Professor.");
+		}
+
 	}
 	
 	public static void editarProjeto() {
@@ -257,6 +214,15 @@ public class Laboratorio {
 										"Data inicio: " + projeto.getData_ini() + "\n" +
 										"Data termino: " + projeto.getData_fim() + "\n" +
 										"Status: " + projeto.getStatus() + "\n");
+					System.out.println("Participantes: ");
+					for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
+						int participante = (int)projeto.getListaParticipantes().get(i);
+						
+						Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
+						System.out.println("Nome: " + colaborador.getNome() + " ");
+					}
+					
+					System.out.println("\n");
 					System.out.println("O que deseja modificar?");
 					System.out.println("1. Titulo");
 					System.out.println("2. Objetivo");
@@ -266,6 +232,7 @@ public class Laboratorio {
 					System.out.println("6. Data inicio");
 					System.out.println("7. Data termino");
 					System.out.println("8. Status");
+					System.out.println("9. Adicionar particiantes");
 					System.out.println("0. Sair");
 					op = ler.nextInt();
 					
@@ -321,6 +288,67 @@ public class Laboratorio {
 							
 							projeto.setStatus(status);
 							break;
+						case 9:
+							System.out.println("1. Graduando");
+							System.out.println("2. Mestrando");
+							System.out.println("3. Pesquisador");
+							System.out.println("4. Professor");
+							op = ler.nextInt();
+							switch ( op ) {
+								case 1:
+									System.out.println("ID do Graduando: ");
+									int graduando = ler.nextInt();
+									
+									if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
+										projeto.addParticipante(graduando);
+										
+										Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
+										colaborador.addListaProjetos(id);
+									} else {
+										System.out.println("Este colaborador não é um Graduando.");
+									}
+									break;
+								case 2:
+									System.out.println("ID do Mestrando: ");
+									int mestrando = ler.nextInt();
+									
+									if ((Colaborador)listaColaboradores.get(mestrando) instanceof Mestrando) {
+										projeto.addParticipante(mestrando);
+										
+										Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
+										colaborador.addListaProjetos(id);
+									} else {
+										System.out.println("Este colaborador não é um Mestrando.");
+									}
+									break;
+								case 3:
+									System.out.println("ID do Pesquisador: ");
+									int pesquisador = ler.nextInt();
+									
+									if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
+										projeto.addParticipante(pesquisador);
+										
+										Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
+										colaborador.addListaProjetos(id);
+									} else {
+										System.out.println("Este colaborador não é um Pesquisador.");
+									}
+									break;
+								case 4:
+									System.out.println("ID do Professor: ");
+									int professor = ler.nextInt();
+									
+									if ((Colaborador)listaColaboradores.get(professor) instanceof Professor) {
+										projeto.addParticipante(professor);
+										
+										Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
+										colaborador.addListaProjetos(id);
+									} else {
+										System.out.println("Este colaborador não é um Professor.");
+									}
+									break;
+							}
+							break;
 					}
 				}while (op != 0);
 				
@@ -329,6 +357,10 @@ public class Laboratorio {
 			}
 			
 		}
+		
+	}
+	
+	public static void listarProjetos() {
 		
 	}
 	

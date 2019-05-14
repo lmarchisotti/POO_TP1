@@ -19,8 +19,8 @@ public class Projeto {
 		return listaParticipantes;
 	}
 
-	public void addParticipante(Colaborador colaborador) {
-		listaParticipantes.add(colaborador);
+	public void addParticipante(int idColaborador) {
+		listaParticipantes.add(idColaborador);
 	}
 	
 	public String getTitulo() {
