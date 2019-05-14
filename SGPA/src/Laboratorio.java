@@ -21,13 +21,14 @@ public class Laboratorio {
 	        System.out.println("|------------------------------------|");
 	        System.out.println("| 4 - Cadastrar Projeto              |");
 	        System.out.println("| 5 - Editar Projeto                 |");
+	        System.out.println("| 6 - Listar Projeto                 |");
 	        System.out.println("|------------------------------------|");
-	        System.out.println("| 6 - Cadastrar Publicacao           |");
-	        System.out.println("| 7 - Editar Publicacao              |");
+	        System.out.println("| 7 - Cadastrar Publicacao           |");
+	        System.out.println("| 8 - Editar Publicacao              |");
 	        System.out.println("======================================");
-	        System.out.println("| 8 - Consulta por Colaborador       |");
-	        System.out.println("| 9 - Consulta por Projeto           |");
-	        System.out.println("| 10 - Relatorio de Producao do Lab. |");
+	        System.out.println("| 9 - Consulta por Colaborador       |");
+	        System.out.println("| 10 - Consulta por Projeto           |");
+	        System.out.println("| 11 - Relatorio de Producao do Lab. |");
 	        System.out.println("======================================");
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
@@ -54,7 +55,7 @@ public class Laboratorio {
 	            	editarProjeto();
 	                break;
 	            case 6 :
-
+	            	listarProjetos();
 	                break;	          
 	            case 7 :
 
@@ -64,6 +65,12 @@ public class Laboratorio {
 	            	break;
 	            case 9 :
 
+	            	break;
+	            case 10:
+	            	
+	            	break;
+	            case 11:
+	            	
 	            	break;
 
 	        }
@@ -361,6 +368,12 @@ public class Laboratorio {
 	}
 	
 	public static void listarProjetos() {
+		
+		for (int i = 0; i < listaColaboradores.size(); i++) {
+			Projeto projeto = (Projeto)listaProjetos.get(i);
+			
+			System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
+		}
 		
 	}
 	
