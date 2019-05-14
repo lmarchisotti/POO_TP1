@@ -468,7 +468,10 @@ public class Laboratorio {
 	
 	public static void cadastrarPublicacao() {
 		
-		//
+		String titulo, conferencia, ano;
+		int idProjeto;
+		
+		
 		
 	}
 	
