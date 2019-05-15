@@ -24,11 +24,10 @@ public class Laboratorio {
 	        System.out.println("| 6 - Listar Projetos                |");
 	        System.out.println("|------------------------------------|");
 	        System.out.println("| 7 - Cadastrar Publicação           |");
-	        System.out.println("| 8 - Editar Publicação              |");
 	        System.out.println("======================================");
-	        System.out.println("| 9 - Consulta por Colaborador       |");
-	        System.out.println("| 10 - Consulta por Projeto          |");
-	        System.out.println("| 11 - Relatório de Produção do Lab. |");
+	        System.out.println("| 8 - Consulta por Colaborador       |");
+	        System.out.println("| 9 - Consulta por Projeto           |");
+	        System.out.println("| 10 - Relatório de Produção do Lab. |");
 	        System.out.println("======================================");
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
@@ -67,9 +66,6 @@ public class Laboratorio {
 
 	            	break;
 	            case 10:
-	            	
-	            	break;
-	            case 11:
 	            	
 	            	break;
 
@@ -311,13 +307,13 @@ public class Laboratorio {
 							projeto.setValor_financiado(valor_financiado);
 							break;
 						case 6:
-							System.out.println("Data início: ");
+							System.out.println("Data início (ano): ");
 							String data_ini = ler.next();
 							
 							projeto.setData_ini(data_ini); // Converter string data, para tipo data
 							break;
 						case 7:
-							System.out.println("Data término: ");
+							System.out.println("Data término (ano): ");
 							String data_fim = ler.next();
 							
 							projeto.setData_fim(data_fim); // Converter string data, para tipo data
@@ -499,7 +495,7 @@ public class Laboratorio {
 					int orientando = ler.nextInt();
 					System.out.println("Título: ");
 					String titulo = ler.next();
-					System.out.println("Conferência");
+					System.out.println("Conferência: ");
 					String conferencia = ler.next();
 					System.out.println("Ano");
 					int ano = ler.nextInt();
@@ -537,43 +533,43 @@ public class Laboratorio {
 		
 	}
 	
-	public static void editarPublicacao() {
-		
-		System.out.println("Digite a ID do projeto: ");
-		int idProjeto = ler.nextInt();
-		
-		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
-		
-		System.out.println("Participantes: ");
-		for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
-			int participante = (int)projeto.getListaParticipantes().get(i);
-			
-			Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
-			String conteudo = "ID: " + i + "|" + "Nome: " + colaborador.getNome() + "|";
-			
-			if (colaborador instanceof Graduando) {
-				conteudo = conteudo + "Tipo: Graduando" + "\n";
-			} else {
-				if (colaborador instanceof Mestrando) {
-					conteudo = conteudo + "Tipo: Mestrando" + "\n";
-				} else {
-					if (colaborador instanceof Pesquisador) {
-						conteudo = conteudo + "Tipo: Pesquisador" + "\n";
-					} else {
-						if (colaborador instanceof Professor) {
-							conteudo = conteudo + "Tipo: Professor" + "\n";
-						}
-					}
-				}
-			}
-			
-			System.out.println(conteudo);
-		}
-		
-		System.out.println("Qual outro colaborador faz parte desta publicação?");
-		System.out.println("Digite o ID: ");
-		int idColaborador = ler.nextInt();
-		
-	}
+//	public static void editarPublicacao() {
+//		
+//		System.out.println("Digite a ID do projeto: ");
+//		int idProjeto = ler.nextInt();
+//		
+//		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
+//		
+//		System.out.println("Participantes: ");
+//		for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
+//			int participante = (int)projeto.getListaParticipantes().get(i);
+//			
+//			Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
+//			String conteudo = "ID: " + i + "|" + "Nome: " + colaborador.getNome() + "|";
+//			
+//			if (colaborador instanceof Graduando) {
+//				conteudo = conteudo + "Tipo: Graduando" + "\n";
+//			} else {
+//				if (colaborador instanceof Mestrando) {
+//					conteudo = conteudo + "Tipo: Mestrando" + "\n";
+//				} else {
+//					if (colaborador instanceof Pesquisador) {
+//						conteudo = conteudo + "Tipo: Pesquisador" + "\n";
+//					} else {
+//						if (colaborador instanceof Professor) {
+//							conteudo = conteudo + "Tipo: Professor" + "\n";
+//						}
+//					}
+//				}
+//			}
+//			
+//			System.out.println(conteudo);
+//		}
+//		
+//		System.out.println("Qual outro colaborador faz parte desta publicação?");
+//		System.out.println("Digite o ID: ");
+//		int idColaborador = ler.nextInt();
+//		
+//	}
 	
 }
