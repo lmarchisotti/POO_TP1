@@ -26,9 +26,9 @@ public class Laboratorio {
 	        System.out.println("| 7 - Cadastrar Publicação           |");
 //	        System.out.println("| 8 - Editar Publicação              |");
 	        System.out.println("======================================");
-	        System.out.println("| 9 - Consulta por Colaborador       |");
-	        System.out.println("| 10 - Consulta por Projeto          |");
-	        System.out.println("| 11 - Relatório de Produção do Lab. |");
+	        System.out.println("| 8 - Consulta por Colaborador       |");
+	        System.out.println("| 9 - Consulta por Projeto           |");
+	        System.out.println("| 10 - Relatório de Produção do Lab. |");
 	        System.out.println("======================================");
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
@@ -69,13 +69,10 @@ public class Laboratorio {
 	            case 10:
 	            	
 	            	break;
-	            case 11:
-	            	
-	            	break;
 
 	        }
-
-	    } while( opcao != 0 );
+	        
+		} while( opcao != 0 );
 
 	}
 
@@ -549,6 +546,14 @@ public class Laboratorio {
 //		System.out.println("Digite a ID do projeto: ");
 //		int idProjeto = ler.nextInt();
 //		
+//		System.out.println("ID da publicação: ");
+//		int idPublicacao = ler.nextInt();
+//		
+//		System.out.println("ID do Orientando: ");
+//		System.out.println("Título: ");
+//		System.out.println("Conferência: ");
+//		System.out.println("Ano");
+//		
 //		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
 //		
 //		System.out.println("Participantes: ");
@@ -577,10 +582,29 @@ public class Laboratorio {
 //			System.out.println(conteudo);
 //		}
 //		
-//		System.out.println("Qual outro colaborador faz parte desta publicação?");
-//		System.out.println("Digite o ID: ");
-//		int idColaborador = ler.nextInt();
+//		int orientando = ler.nextInt();
+//		String titulo = ler.next();
+//		String conferencia = ler.next();
+//		int ano = ler.nextInt();
 //		
 //	}
+	
+	public static void consultaColaborador() {
+		
+		//
+		
+	}
+	
+	public static void consultaProjeto() {
+		
+		//
+		
+	}
+	
+	public static void relatorioProducao() {
+		
+		//
+		
+	}
 	
 }
