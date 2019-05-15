@@ -24,14 +24,15 @@ public class Laboratorio {
 	        System.out.println("| 6 - Listar Projetos                |");
 	        System.out.println("|------------------------------------|");
 	        System.out.println("| 7 - Cadastrar Publicação           |");
+//	        System.out.println("| 8 - Editar Publicação              |");
 	        System.out.println("======================================");
-	        System.out.println("| 8 - Consulta por Colaborador       |");
-	        System.out.println("| 9 - Consulta por Projeto           |");
-	        System.out.println("| 10 - Relatório de Produção do Lab. |");
+	        System.out.println("| 9 - Consulta por Colaborador       |");
+	        System.out.println("| 10 - Consulta por Projeto          |");
+	        System.out.println("| 11 - Relatório de Produção do Lab. |");
 	        System.out.println("======================================");
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
-
+	        
 	        System.out.println("Escolha uma opcão: ");
 	        
 	        opcao = ler.nextInt();
@@ -57,7 +58,7 @@ public class Laboratorio {
 	            	listarProjetos();
 	                break;	          
 	            case 7 :
-
+	            	cadastrarPublicacao();
 	            	break;
 	            case 8 :
 
@@ -66,6 +67,9 @@ public class Laboratorio {
 
 	            	break;
 	            case 10:
+	            	
+	            	break;
+	            case 11:
 	            	
 	            	break;
 
@@ -357,15 +361,19 @@ public class Laboratorio {
 								System.out.println("2. Mestrando");
 								System.out.println("3. Pesquisador");
 								System.out.println("4. Professor");
-								op = ler.nextInt();
-								switch ( op ) {
+								System.out.println("0. Sair");
+								int op2 = ler.nextInt();
+								switch ( op2 ) {
+									case 0:
+										break;
 									case 1:
 										System.out.println("ID do Graduando: ");
 										int graduando = ler.nextInt();
 										
 										int numProjetos = 0;
 										for (int i = 0; i < listaProjetos.size(); i++) {
-											if(projeto.getListaParticipantes().contains((Colaborador)listaColaboradores.get(graduando))) {
+											Projeto p = (Projeto)listaProjetos.get(i);
+											if(p.getStatus() == "Em andamento" && p.getListaParticipantes().contains(graduando)) {
 												numProjetos = numProjetos + 1;
 											}
  										}
@@ -373,10 +381,10 @@ public class Laboratorio {
 										if (numProjetos < 2) {
 											if (listaColaboradores.contains((Colaborador)listaColaboradores.get(graduando))) {
 												if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
+													projeto.addParticipante(graduando);
+													
 													Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
 													colaborador.addListaProjetos(id);
-													
-													projeto.addParticipante(graduando);
 												} else {
 													System.out.println("Este colaborador não é um Graduando.");
 												}
@@ -384,7 +392,7 @@ public class Laboratorio {
 												System.out.println("ID inexistente.");
 											}
 										} else {
-											System.out.println("Este graduando já está em 2 projetos.");
+											System.out.println("Este graduando já está em 2 projetos 'Em andamento'.");
 										}
 										break;
 									case 2:
@@ -466,12 +474,11 @@ public class Laboratorio {
 			for (int i = 0; i < listaProjetos.size(); i++) {
 				Projeto projeto = (Projeto)listaProjetos.get(i);
 				
-				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "\n");
+				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "|" + "Status: " + projeto.getStatus());
 			}
 		} else {
 			System.out.println("Não há projetos cadastrados.");
 		}
-		
 		
 	}
 	
@@ -480,55 +487,59 @@ public class Laboratorio {
 		System.out.println("Digite a ID do projeto: ");
 		int idProjeto = ler.nextInt();
 		
-		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
-		
-		if (projeto.getStatus() == "Em andamento") {
-		
-			System.out.println("Orientador: ");
-			int orientador = ler.nextInt();
+		if (listaProjetos.size() > 0) {
+			Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
 			
-			if (listaColaboradores.contains((Colaborador)listaColaboradores.get(orientador))) {
+			if (projeto.getStatus() == "Em andamento") {
+			
+				System.out.println("Orientador: ");
+				int orientador = ler.nextInt();
 				
-				if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
+				if (listaColaboradores.contains((Colaborador)listaColaboradores.get(orientador))) {
 					
-					System.out.println("ID do Orientando: ");
-					int orientando = ler.nextInt();
-					System.out.println("Título: ");
-					String titulo = ler.next();
-					System.out.println("Conferência: ");
-					String conferencia = ler.next();
-					System.out.println("Ano");
-					int ano = ler.nextInt();
+					if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
+						
+						System.out.println("ID do Orientando: ");
+						int orientando = ler.nextInt();
+						System.out.println("Título: ");
+						String titulo = ler.next();
+						System.out.println("Conferência: ");
+						String conferencia = ler.next();
+						System.out.println("Ano");
+						int ano = ler.nextInt();
+						
+						Publicacao publicacao = new Publicacao();
+						
+						publicacao.setTitulo(titulo);
+						publicacao.setConferencia(conferencia);
+						publicacao.setAno(ano);
+						publicacao.setIdProjeto(idProjeto);
+						publicacao.setOrientador(orientador);
+						
+						Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
+						colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
+						
+						Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
+						colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
+						colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
+						
+					} else {
+						System.out.println("Este colaborador não é um Professor.");
+					}
 					
-					Publicacao publicacao = new Publicacao();
-					
-					publicacao.setTitulo(titulo);
-					publicacao.setConferencia(conferencia);
-					publicacao.setAno(ano);
-					publicacao.setIdProjeto(idProjeto);
-					publicacao.setOrientador(orientador);
-					
-					Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
-					colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
-					
-					Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
-					colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
-					colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
-					
-				} else {
-					System.out.println("Este colaborador não é um Professor.");
+				}else {
+					if (listaColaboradores.size() == 0) {
+						System.out.println("Não há colaboradores cadastrados.");
+					} else {
+						System.out.println("ID inexistente.");
+					}
 				}
 				
-			}else {
-				if (listaColaboradores.size() == 0) {
-					System.out.println("Não há colaboradores cadastrados.");
-				} else {
-					System.out.println("ID inexistente.");
-				}
+			} else {
+				System.out.println("Este projeto não está 'Em andamento'.");
 			}
-			
 		} else {
-			System.out.println("Este projeto não está 'Em andamento'.");
+			System.out.println("Não há projetos cadastrados.");
 		}
 		
 	}
