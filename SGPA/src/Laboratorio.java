@@ -334,7 +334,25 @@ public class Laboratorio {
 							if (status == 1) {
 								projeto.setStatus("Em andamento");
 							} else {
-								projeto.setStatus("Concluído");
+								
+								if (status == 2) {
+									for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
+										int participante = (int)projeto.getListaParticipantes().get(i);
+										
+										Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
+										
+										for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
+											Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
+											
+											if (publicacao.getIdProjeto() == id) {
+												projeto.setStatus("Concluído");
+											} else {
+												System.out.println("Ainda não há publicações associadas ao projeto.");
+											}
+										}
+									}
+								}
+								
 							}
 							break;
 						case 9:
@@ -464,20 +482,97 @@ public class Laboratorio {
 	public static void cadastrarPublicacao() {
 		
 		System.out.println("Digite a ID do projeto: ");
-		int projeto = ler.nextInt();
+		int idProjeto = ler.nextInt();
 		
-		// verificar status do projeto antes de prosseguir
+		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
 		
-		System.out.println("Orientador: ");
-		int orientador = ler.nextInt();
-		System.out.println("Título: ");
-		String titulo = ler.next();
-		System.out.println("Conferência");
-		String conferencia = ler.next();
-		System.out.println("Ano");
-		int ano = ler.nextInt();
+		if (projeto.getStatus() == "Em andamento") {
 		
-		//
+			System.out.println("Orientador: ");
+			int orientador = ler.nextInt();
+			
+			if (listaColaboradores.contains((Colaborador)listaColaboradores.get(orientador))) {
+				
+				if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
+					
+					System.out.println("ID do Orientando: ");
+					int orientando = ler.nextInt();
+					System.out.println("Título: ");
+					String titulo = ler.next();
+					System.out.println("Conferência");
+					String conferencia = ler.next();
+					System.out.println("Ano");
+					int ano = ler.nextInt();
+					
+					Publicacao publicacao = new Publicacao();
+					
+					publicacao.setTitulo(titulo);
+					publicacao.setConferencia(conferencia);
+					publicacao.setAno(ano);
+					publicacao.setIdProjeto(idProjeto);
+					publicacao.setOrientador(orientador);
+					
+					Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
+					colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
+					
+					Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
+					colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
+					colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
+					
+				} else {
+					System.out.println("Este colaborador não é um Professor.");
+				}
+				
+			}else {
+				if (listaColaboradores.size() == 0) {
+					System.out.println("Não há colaboradores cadastrados.");
+				} else {
+					System.out.println("ID inexistente.");
+				}
+			}
+			
+		} else {
+			System.out.println("Este projeto não está 'Em andamento'.");
+		}
+		
+	}
+	
+	public static void editarPublicacao() {
+		
+		System.out.println("Digite a ID do projeto: ");
+		int idProjeto = ler.nextInt();
+		
+		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
+		
+		System.out.println("Participantes: ");
+		for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
+			int participante = (int)projeto.getListaParticipantes().get(i);
+			
+			Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
+			String conteudo = "ID: " + i + "|" + "Nome: " + colaborador.getNome() + "|";
+			
+			if (colaborador instanceof Graduando) {
+				conteudo = conteudo + "Tipo: Graduando" + "\n";
+			} else {
+				if (colaborador instanceof Mestrando) {
+					conteudo = conteudo + "Tipo: Mestrando" + "\n";
+				} else {
+					if (colaborador instanceof Pesquisador) {
+						conteudo = conteudo + "Tipo: Pesquisador" + "\n";
+					} else {
+						if (colaborador instanceof Professor) {
+							conteudo = conteudo + "Tipo: Professor" + "\n";
+						}
+					}
+				}
+			}
+			
+			System.out.println(conteudo);
+		}
+		
+		System.out.println("Qual outro colaborador faz parte desta publicação?");
+		System.out.println("Digite o ID: ");
+		int idColaborador = ler.nextInt();
 		
 	}
 	

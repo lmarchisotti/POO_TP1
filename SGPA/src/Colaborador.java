@@ -3,7 +3,7 @@ import java.util.*;
 public class Colaborador {
 
 	private List listaProjetos = new ArrayList();
-	private List listaProducaoAcademica = new ArrayList();
+	ProducaoAcademica producaoAcademica = new ProducaoAcademica();
 	
 	private String nome, email;
 	
@@ -31,12 +31,8 @@ public class Colaborador {
 		listaProjetos.add(idProjeto);
 	}
 
-	public List getListaProducaoAcademica() {
-		return listaProducaoAcademica;
-	}
-
-	public void addListaProducaoAcademica(int idListaProducaoAcademica) {
-		listaProducaoAcademica.add(idListaProducaoAcademica);
+	public ProducaoAcademica getProducaoAcademica() {
+		return producaoAcademica;
 	}
 	
 	public String imprimir() {

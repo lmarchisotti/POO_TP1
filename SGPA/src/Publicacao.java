@@ -1,25 +1,14 @@
-import java.util.*;
 
 public class Publicacao extends ProducaoAcademica {
-
-	private List listaParticipantes = new ArrayList();
 	
-	private String titulo, conferencia, ano, orientador;
-	private int idProjeto;
+	private String titulo, conferencia;
+	private int idProjeto, ano, orientador;
 	
-	public List getListaParticipantes() {
-		return listaParticipantes;
-	}
-
-	public void addParticipante(int idColaborador) {
-		listaParticipantes.add(idColaborador);
-	}
-	
-	public String getOrientador() {
+	public int getOrientador() {
 		return orientador;
 	}
 	
-	public void setOrientador(String orientador) {
+	public void setOrientador(int orientador) {
 		this.orientador = orientador;
 	}
 	
@@ -39,11 +28,11 @@ public class Publicacao extends ProducaoAcademica {
 		this.conferencia = conferencia;
 	}
 	
-	public String getAno() {
+	public int getAno() {
 		return ano;
 	}
 	
-	public void setAno(String ano) {
+	public void setAno(int ano) {
 		this.ano = ano;
 	}
 	
