@@ -6,7 +6,7 @@ public class Colaborador {
 	private List listaProducaoAcademica = new ArrayList();
 	
 	private String nome, email;
-
+	
 	public String getNome() {
 		return nome;
 	}

@@ -1,6 +1,6 @@
 
 public class Professor extends Colaborador {
 
-	// Lista de orientandos
+	// Define somente o tipo
 	
 }

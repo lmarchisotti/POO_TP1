@@ -217,11 +217,6 @@ public class Laboratorio {
 				
 				listaProjetos.add(projeto);
 				
-				// TESTE -- número de participantes não está sendo iniciado do zero para cada projeto.
-				Projeto projetoTeste = (Projeto)listaProjetos.get(listaProjetos.lastIndexOf(projeto));
-				System.out.println(projetoTeste.getListaParticipantes().size());
-				// TESTE --
-				
 				Colaborador colaborador = (Colaborador)listaColaboradores.get(professor_gerente);
 				colaborador.addListaProjetos(listaProjetos.lastIndexOf(projeto));
 			} else {
@@ -468,10 +463,21 @@ public class Laboratorio {
 	
 	public static void cadastrarPublicacao() {
 		
-		String titulo, conferencia, ano;
-		int idProjeto;
+		System.out.println("Digite a ID do projeto: ");
+		int projeto = ler.nextInt();
 		
+		// verificar status do projeto antes de prosseguir
 		
+		System.out.println("Orientador: ");
+		int orientador = ler.nextInt();
+		System.out.println("Título: ");
+		String titulo = ler.next();
+		System.out.println("Conferência");
+		String conferencia = ler.next();
+		System.out.println("Ano");
+		int ano = ler.nextInt();
+		
+		//
 		
 	}
 	
