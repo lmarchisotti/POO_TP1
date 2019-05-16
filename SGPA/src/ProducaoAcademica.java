@@ -14,7 +14,7 @@ public class ProducaoAcademica {
 	}
 	
 	public List getListaOrientacoes() {
-		return listaPublicacoes;
+		return listaOrientacoes;
 	}
 
 	public void addListaOrientacoes(int orientacao) {
