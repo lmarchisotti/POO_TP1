@@ -23,17 +23,17 @@ public class Laboratorio {
 	        System.out.println("| 5 - Editar Projeto                 |");
 	        System.out.println("| 6 - Listar Projetos                |");
 	        System.out.println("|------------------------------------|");
-	        System.out.println("| 7 - Cadastrar PublicaÁ„o           |");
-//	        System.out.println("| 8 - Editar PublicaÁ„o              |");
+	        System.out.println("| 7 - Cadastrar Publica√ß√£o           |");
+//	        System.out.println("| 8 - Editar Publica√ß√£o              |");
 	        System.out.println("======================================");
 	        System.out.println("| 8 - Consulta por Colaborador       |");
 	        System.out.println("| 9 - Consulta por Projeto           |");
-	        System.out.println("| 10 - RelatÛrio de ProduÁ„o do Lab. |");
+	        System.out.println("| 10 - Relat√≥rio de Produ√ß√£o do Lab. |");
 	        System.out.println("======================================");
 	        System.out.println("| 0 - Sair                           |");
 	        System.out.println("======================================");
 	        
-	        System.out.println("Escolha uma opc„o: ");
+	        System.out.println("Escolha uma opc√£o: ");
 	        
 	        opcao = ler.nextInt();
 	        // opcao = Integer.parseInt(Console.readLine());
@@ -170,7 +170,7 @@ public class Laboratorio {
 				System.out.println(conteudo);
 			}
 		} else {
-			System.out.println("N„o h· colaboradores cadastrados.");
+			System.out.println("N√£o h√° colaboradores cadastrados.");
 		}
 		
 	}
@@ -179,7 +179,7 @@ public class Laboratorio {
 		
 		Projeto projeto = new Projeto();
 		
-		System.out.println("ID do Professor que ser· gerente deste projeto: ");
+		System.out.println("ID do Professor que ser√° gerente deste projeto: ");
 		int professor_gerente = ler.nextInt();
 		
 		if (listaColaboradores.contains((Colaborador)listaColaboradores.get(professor_gerente))) {
@@ -188,19 +188,19 @@ public class Laboratorio {
 				projeto.addParticipante(professor_gerente);
 				projeto.setProfessorGerente(professor_gerente);
 				
-				System.out.println("TÌtulo: ");
+				System.out.println("T√≠tulo: ");
 				String titulo = ler.next();
 				System.out.println("Objetivo: ");
 				String objetivo = ler.next();
-				System.out.println("DescriÁ„o: ");
+				System.out.println("Descri√ß√£o: ");
 				String descricao = ler.next();
 				System.out.println("Financiadora: ");
 				String financiadora = ler.next();
 				System.out.println("Valor financiado: ");
 				int valor_financiado = ler.nextInt();
-				System.out.println("Data inÌcio: ");
+				System.out.println("Data in√≠cio: ");
 				String data_ini = ler.next();
-				System.out.println("Data tÈrmino: ");
+				System.out.println("Data t√©rmino: ");
 				String data_fim = ler.next();
 				
 				projeto.setTitulo(titulo);
@@ -210,19 +210,19 @@ public class Laboratorio {
 				projeto.setValor_financiado(valor_financiado);
 				projeto.setData_ini(data_ini);
 				projeto.setData_fim(data_fim);
-				projeto.setStatus("Em elaboraÁ„o");
+				projeto.setStatus("Em elabora√ß√£o");
 				
 				listaProjetos.add(projeto);
 				
 				Colaborador colaborador = (Colaborador)listaColaboradores.get(professor_gerente);
 				colaborador.addListaProjetos(listaProjetos.lastIndexOf(projeto));
 			} else {
-				System.out.println("Este colaborador n„o È um Professor.");
+				System.out.println("Este colaborador n√£o √© um Professor.");
 			}
 			
 		}else {
 			if (listaColaboradores.size() == 0) {
-				System.out.println("N„o h· colaboradores cadastrados.");
+				System.out.println("N√£o h√° colaboradores cadastrados.");
 			} else {
 				System.out.println("ID inexistente.");
 			}
@@ -246,13 +246,13 @@ public class Laboratorio {
 				
 				int op;
 				do {
-					System.out.println("TÌtulo: " + projeto.getTitulo() + "\n" +
+					System.out.println("T√≠tulo: " + projeto.getTitulo() + "\n" +
 										"Objetivo: " + projeto.getObjetivo() + "\n" +
-										"DescriÁ„o: " + projeto.getDescricao() + "\n" +
+										"Descri√ß√£o: " + projeto.getDescricao() + "\n" +
 										"Financiadora: " + projeto.getFinanciadora() + "\n" +
 										"Valor financiado: " + projeto.getValor_financiado() + "\n" +
-										"Data inÌcio: " + projeto.getData_ini() + "\n" +
-										"Data tÈrmino: " + projeto.getData_fim() + "\n" +
+										"Data in√≠cio: " + projeto.getData_ini() + "\n" +
+										"Data t√©rmino: " + projeto.getData_fim() + "\n" +
 										"Status: " + projeto.getStatus() + "\n");
 					System.out.println("Participantes: ");
 					for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
@@ -264,13 +264,13 @@ public class Laboratorio {
 					
 					System.out.println("\n");
 					System.out.println("O que deseja modificar?");
-					System.out.println("1. TÌtulo");
+					System.out.println("1. T√≠tulo");
 					System.out.println("2. Objetivo");
-					System.out.println("3. DescriÁ„o");
+					System.out.println("3. Descri√ß√£o");
 					System.out.println("4. Financiadora");
 					System.out.println("5. Valor financiado");
-					System.out.println("6. Data inÌcio");
-					System.out.println("7. Data tÈrmino");
+					System.out.println("6. Data in√≠cio");
+					System.out.println("7. Data t√©rmino");
 					System.out.println("8. Status");
 					System.out.println("9. Adicionar particiantes");
 					System.out.println("0. Sair");
@@ -278,7 +278,7 @@ public class Laboratorio {
 					
 					switch ( op ) {
 						case 1:
-							System.out.println("TÌtulo: ");
+							System.out.println("T√≠tulo: ");
 							String titulo = ler.next();
 							
 							projeto.setTitulo(titulo);
@@ -290,7 +290,7 @@ public class Laboratorio {
 							projeto.setObjetivo(objetivo);
 							break;
 						case 3:
-							System.out.println("DescriÁ„o: ");
+							System.out.println("Descri√ß√£o: ");
 							String descricao = ler.next();
 							
 							projeto.setDescricao(descricao);
@@ -308,24 +308,24 @@ public class Laboratorio {
 							projeto.setValor_financiado(valor_financiado);
 							break;
 						case 6:
-							System.out.println("Data inÌcio (ano): ");
+							System.out.println("Data in√≠cio (ano): ");
 							String data_ini = ler.next();
 							
 							projeto.setData_ini(data_ini); // Converter string data, para tipo data
 							break;
 						case 7:
-							System.out.println("Data tÈrmino (ano): ");
+							System.out.println("Data t√©rmino (ano): ");
 							String data_fim = ler.next();
 							
 							projeto.setData_fim(data_fim); // Converter string data, para tipo data
 							break;
 						case 8:
-							// Deve testar se todos os campos est„o preenchidos antes de alterar
-							// (Perguntar para o Elder se esse teste n„o È in˙til, j· que È impossÌvel - dado a maneira que foi feito esse cÛdigo - n„o preencher todos os campos)
+							// Deve testar se todos os campos est√£o preenchidos antes de alterar
+							// (Perguntar para o Elder se esse teste n√£o √© in√∫til, j√° que √© imposs√≠vel - dado a maneira que foi feito esse c√≥digo - n√£o preencher todos os campos)
 							
 							System.out.println("Status: ");
 							System.out.println("1. Em andamento");
-							System.out.println("2. ConcluÌdo");
+							System.out.println("2. Conclu√≠do");
 							int status = ler.nextInt();
 							
 							if (status == 1) {
@@ -342,9 +342,9 @@ public class Laboratorio {
 											Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
 											
 											if (publicacao.getIdProjeto() == id) {
-												projeto.setStatus("ConcluÌdo");
+												projeto.setStatus("Conclu√≠do");
 											} else {
-												System.out.println("Ainda n„o h· publicaÁıes associadas ao projeto.");
+												System.out.println("Ainda n√£o h√° publica√ß√µes associadas ao projeto.");
 											}
 										}
 									}
@@ -353,7 +353,7 @@ public class Laboratorio {
 							}
 							break;
 						case 9:
-							if (projeto.getStatus() == "Em elaboraÁ„o") {
+							if (projeto.getStatus() == "Em elabora√ß√£o") {
 								System.out.println("1. Graduando");
 								System.out.println("2. Mestrando");
 								System.out.println("3. Pesquisador");
@@ -383,13 +383,13 @@ public class Laboratorio {
 													Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
 													colaborador.addListaProjetos(id);
 												} else {
-													System.out.println("Este colaborador n„o È um Graduando.");
+													System.out.println("Este colaborador n√£o √© um Graduando.");
 												}
 											} else {
 												System.out.println("ID inexistente.");
 											}
 										} else {
-											System.out.println("Este graduando j· est· em 2 projetos 'Em andamento'.");
+											System.out.println("Este graduando j√° est√° em 2 projetos 'Em andamento'.");
 										}
 										break;
 									case 2:
@@ -403,7 +403,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador n„o È um Mestrando.");
+												System.out.println("Este colaborador n√£o √© um Mestrando.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -420,7 +420,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador n„o È um Pesquisador.");
+												System.out.println("Este colaborador n√£o √© um Pesquisador.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -437,7 +437,7 @@ public class Laboratorio {
 												Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
 												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("Este colaborador n„o È um Professor.");
+												System.out.println("Este colaborador n√£o √© um Professor.");
 											}
 										} else {
 											System.out.println("ID inexistente.");
@@ -445,19 +445,19 @@ public class Laboratorio {
 										break;
 								}
 							} else {
-								System.out.println("Projeto n„o est· no est·gio de 'Em elaboraÁ„o'.");
+								System.out.println("Projeto n√£o est√° no est√°gio de 'Em elabora√ß√£o'.");
 							}
 							break;
 					}
 				}while (op != 0);
 				
 			} else {
-				System.out.println("N„o È o professor gerente deste projeto.");
+				System.out.println("N√£o √© o professor gerente deste projeto.");
 			}
 			
 		} else {
 			if (listaProjetos.size() == 0) {
-				System.out.println("N„o existem projetos cadastrados.");
+				System.out.println("N√£o existem projetos cadastrados.");
 			} else {
 				System.out.println("Projeto inexistente.");
 			}
@@ -474,7 +474,7 @@ public class Laboratorio {
 				System.out.println("ID: " + i + "|" + "Titulo: " + projeto.getTitulo() + "|" + "Status: " + projeto.getStatus());
 			}
 		} else {
-			System.out.println("N„o h· projetos cadastrados.");
+			System.out.println("N√£o h√° projetos cadastrados.");
 		}
 		
 	}
@@ -498,9 +498,9 @@ public class Laboratorio {
 						
 						System.out.println("ID do Orientando: ");
 						int orientando = ler.nextInt();
-						System.out.println("TÌtulo: ");
+						System.out.println("T√≠tulo: ");
 						String titulo = ler.next();
-						System.out.println("ConferÍncia: ");
+						System.out.println("Confer√™ncia: ");
 						String conferencia = ler.next();
 						System.out.println("Ano");
 						int ano = ler.nextInt();
@@ -521,22 +521,22 @@ public class Laboratorio {
 						colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
 						
 					} else {
-						System.out.println("Este colaborador n„o È um Professor.");
+						System.out.println("Este colaborador n√£o √© um Professor.");
 					}
 					
 				}else {
 					if (listaColaboradores.size() == 0) {
-						System.out.println("N„o h· colaboradores cadastrados.");
+						System.out.println("N√£o h√° colaboradores cadastrados.");
 					} else {
 						System.out.println("ID inexistente.");
 					}
 				}
 				
 			} else {
-				System.out.println("Este projeto n„o est· 'Em andamento'.");
+				System.out.println("Este projeto n√£o est√° 'Em andamento'.");
 			}
 		} else {
-			System.out.println("N„o h· projetos cadastrados.");
+			System.out.println("N√£o h√° projetos cadastrados.");
 		}
 		
 	}
@@ -546,12 +546,12 @@ public class Laboratorio {
 //		System.out.println("Digite a ID do projeto: ");
 //		int idProjeto = ler.nextInt();
 //		
-//		System.out.println("ID da publicaÁ„o: ");
+//		System.out.println("ID da publica√ß√£o: ");
 //		int idPublicacao = ler.nextInt();
 //		
 //		System.out.println("ID do Orientando: ");
-//		System.out.println("TÌtulo: ");
-//		System.out.println("ConferÍncia: ");
+//		System.out.println("T√≠tulo: ");
+//		System.out.println("Confer√™ncia: ");
 //		System.out.println("Ano");
 //		
 //		Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
@@ -591,7 +591,48 @@ public class Laboratorio {
 	
 	public static void consultaColaborador() {
 		
-		//
+		System.out.println("Digite o NOME do colaborador: ");
+		String nomeColaborador = ler.next();
+		
+		for (int i = 0; i < listaColaboradores.size(); i++) {
+		
+			Colaborador colaborador = (Colaborador)listaColaboradores.get(i);
+			if (nomeColaborador == colaborador.getNome()) {
+				
+				System.out.println("Nome: " + colaborador.getNome());
+				System.out.println("Email: " + colaborador.getEmail() + "\n");
+				
+				System.out.println("Projetos: ");
+				for (int j = 0; j < colaborador.getListaProjetos().size(); j++) {
+					
+					Projeto projeto = (Projeto)listaProjetos.get((int)colaborador.getListaProjetos().get(j));
+					System.out.println("T√≠tulo: " + projeto.getTitulo() + "\n" +
+										"Objetivo: " + projeto.getObjetivo() + "\n" +
+										"Descri√ß√£o: " + projeto.getDescricao() + "\n" +
+										"Financiadora: " + projeto.getFinanciadora() + "\n" +
+										"Valor financiado: " + projeto.getValor_financiado() + "\n" +
+										"Data in√≠cio: " + projeto.getData_ini() + "\n" +
+										"Data t√©rmino: " + projeto.getData_fim() + "\n" +
+										"Status: " + projeto.getStatus() + "\n");
+					
+				}
+				
+				System.out.println("Produ√ß√£o Acad√™mica");
+				System.out.println("Publica√ß√µes: ");
+				for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
+					
+					Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
+					System.out.println("T√≠tulo: " + publicacao.getTitulo() + "\n" +
+										"Confer√™ncia: " + publicacao.getConferencia() + "\n" +
+										"Ano: " + publicacao.getAno() + "\n" +
+										"Projeto: " + listaProjetos.get(publicacao.getIdProjeto()) + "\n" +
+										"Orientador: " + listaColaboradores.get(publicacao.getOrientador()) + "\n");
+					
+				}
+				
+			}
+			
+		}
 		
 	}
 	
