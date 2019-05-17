@@ -551,7 +551,6 @@ public class Laboratorio {
 			
 			if (projeto.getStatus() == "Em andamento") {
 			
-				System.out.println("Orientador ou Pesquisador?");
 				System.out.println("1. Orientador");
 				System.out.println("2. Pesquisador");
 				System.out.println("0. Sair");
