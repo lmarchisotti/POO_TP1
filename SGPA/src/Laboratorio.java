@@ -164,16 +164,16 @@ public class Laboratorio {
 				String conteudo = "ID: " + i + "|" + "Nome: " + colaborador.getNome() + "|" + "Email: " + colaborador.getEmail() + "|";
 				
 				if (colaborador instanceof Graduando) {
-					conteudo = conteudo + "Tipo: Graduando" + "\n";
+					conteudo = conteudo + "Tipo: Graduando";
 				} else {
 					if (colaborador instanceof Mestrando) {
-						conteudo = conteudo + "Tipo: Mestrando" + "\n";
+						conteudo = conteudo + "Tipo: Mestrando";
 					} else {
 						if (colaborador instanceof Pesquisador) {
-							conteudo = conteudo + "Tipo: Pesquisador" + "\n";
+							conteudo = conteudo + "Tipo: Pesquisador";
 						} else {
 							if (colaborador instanceof Professor) {
-								conteudo = conteudo + "Tipo: Professor" + "\n";
+								conteudo = conteudo + "Tipo: Professor";
 							}
 						}
 					}
@@ -374,6 +374,7 @@ public class Laboratorio {
 							break;
 						case 9:
 							if (projeto.getStatus() == "Em elaboração") {
+								
 								System.out.println("1. Graduando");
 								System.out.println("2. Mestrando");
 								System.out.println("3. Pesquisador");
@@ -492,6 +493,7 @@ public class Laboratorio {
 										}
 										break;
 								}
+								
 							} else {
 								System.out.println("Projeto não está no estágio de 'Em elaboração'.");
 							}
@@ -562,27 +564,33 @@ public class Laboratorio {
 								
 								if (orientando < listaColaboradores.size()) {
 								
-									System.out.println("Título: ");
-									String titulo = ler.next();
-									System.out.println("Conferência: ");
-									String conferencia = ler.next();
-									System.out.println("Ano");
-									int ano = ler.nextInt();
+									if ((Colaborador)listaColaboradores.get(orientando) instanceof Alunos) {
 									
-									Publicacao publicacao = new Publicacao();
+										System.out.println("Título: ");
+										String titulo = ler.next();
+										System.out.println("Conferência: ");
+										String conferencia = ler.next();
+										System.out.println("Ano");
+										int ano = ler.nextInt();
+										
+										Publicacao publicacao = new Publicacao();
+										
+										publicacao.setTitulo(titulo);
+										publicacao.setConferencia(conferencia);
+										publicacao.setAno(ano);
+										publicacao.setIdProjeto(idProjeto);
+										publicacao.setOrientador(orientador);
+										
+										Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
+										colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
+										
+										Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
+										colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
+										colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
 									
-									publicacao.setTitulo(titulo);
-									publicacao.setConferencia(conferencia);
-									publicacao.setAno(ano);
-									publicacao.setIdProjeto(idProjeto);
-									publicacao.setOrientador(orientador);
-									
-									Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
-									colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
-									
-									Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
-									colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
-									colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
+									} else {
+										System.out.println("Este colaborador não é um Aluno.");
+									}
 								
 								} else {
 									System.out.println("ID inexistente.");
@@ -686,33 +694,31 @@ public class Laboratorio {
 				}
 				
 				System.out.println("PRODUÇÃO ACADÊMICA");
-				System.out.println("Publicações: \n");
+				System.out.println("::Publicações::");
 				for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
 					
 					Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
-					String conteudo = "Título: " + publicacao.getTitulo() + "\n" +
+					System.out.println("Título: " + publicacao.getTitulo() + "\n" +
 										"Conferência: " + publicacao.getConferencia() + "\n" +
-										"Ano: " + publicacao.getAno() + "\n";
+										"Ano: " + publicacao.getAno());
 					Projeto tituloProjeto = (Projeto)listaProjetos.get((int)publicacao.getIdProjeto());
-					conteudo = conteudo + "Projeto: " + tituloProjeto.getTitulo() + "\n";
-					Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
-					conteudo = conteudo + "Orientador: " + orientador.getNome() + "\n";
+					System.out.println("Projeto: " + tituloProjeto.getTitulo());
 					
-					System.out.println(conteudo);
+					if (colaborador instanceof Alunos) {
+						Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
+						System.out.println("Orientador: " + orientador.getNome());
+					}
 					
 				}
 				
 				if (colaborador instanceof Professor) {
-					
-					System.out.println("Orientações: \n");
-					for (int j = 0; j < colaborador.getProducaoAcademica().getListaOrientacoes().size(); j++) {
-						
-						int idOrientando = (int)colaborador.getProducaoAcademica().getListaOrientacoes().get(j);
+					System.out.println("::Orientações::");
+					for (int k = 0; k < colaborador.getProducaoAcademica().getListaOrientacoes().size(); k++) {
+						int idOrientando = (int)colaborador.getProducaoAcademica().getListaOrientacoes().get(k);
 						Colaborador orientando = (Colaborador)listaColaboradores.get(idOrientando);
 						
-						System.out.println("Nome: " + orientando.getNome() + "\n");
+						System.out.println("Orientando: " + orientando.getNome());
 					}
-					
 				}
 				
 			} else {
@@ -746,42 +752,41 @@ public class Laboratorio {
 					"Data início: " + projeto.getData_ini() + "\n" +
 					"Data término: " + projeto.getData_fim() + "\n" +
 					"Status: " + projeto.getStatus() + "\n");
-			System.out.println("Participantes: ");
 			
 			for (int i = 0; i < projeto.getListaParticipantes().size(); i++) {
 				int participante = (int)projeto.getListaParticipantes().get(i);
 			
 				Colaborador colaborador = (Colaborador)listaColaboradores.get(participante);
-				System.out.println("Nome: " + colaborador.getNome());
+				System.out.println("=================================");
+				System.out.println("Colaborador: " + colaborador.getNome());
 				
 				System.out.println("PRODUÇÃO ACADÊMICA");
-				System.out.println("Publicações: \n");
+				System.out.println("::Publicações::");
 				for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
 					
 					Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
-					String conteudo = "Título: " + publicacao.getTitulo() + "\n" +
+					System.out.println("Título: " + publicacao.getTitulo() + "\n" +
 										"Conferência: " + publicacao.getConferencia() + "\n" +
-										"Ano: " + publicacao.getAno() + "\n";
+										"Ano: " + publicacao.getAno());
 					Projeto tituloProjeto = (Projeto)listaProjetos.get((int)publicacao.getIdProjeto());
-					conteudo = conteudo + "Projeto: " + tituloProjeto.getTitulo() + "\n";
-					Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
-					conteudo = conteudo + "Orientador: " + orientador.getNome() + "\n";
+					System.out.println("Projeto: " + tituloProjeto.getTitulo());
 					
-					System.out.println(conteudo);
+					if ((Colaborador)listaColaboradores.get(participante) instanceof Alunos) {
+						Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
+						System.out.println("Orientador: " + orientador.getNome());
+					}
 					
+					System.out.println("\n");
 				}
 				
 				if ((Colaborador)listaColaboradores.get(participante) instanceof Professor) {
-					
-					System.out.println("Orientações: \n");
-					for (int j = 0; j < colaborador.getProducaoAcademica().getListaOrientacoes().size(); j++) {
-						
-						int idOrientando = (int)colaborador.getProducaoAcademica().getListaOrientacoes().get(j);
+					System.out.println("::Orientações::");
+					for (int k = 0; k < colaborador.getProducaoAcademica().getListaOrientacoes().size(); k++) {
+						int idOrientando = (int)colaborador.getProducaoAcademica().getListaOrientacoes().get(k);
 						Colaborador orientando = (Colaborador)listaColaboradores.get(idOrientando);
 						
-						System.out.println("Nome: " + orientando.getNome() + "\n");
+						System.out.println("Orientando: " + orientando.getNome());
 					}
-					
 				}
 				
 			}
@@ -840,6 +845,7 @@ public class Laboratorio {
 			
 		}
 		
+		System.out.println("\n");
 		System.out.println("Número de produção acadêmica por tipo de produção.");
 		System.out.println("Publicações: " + somaPublicacoes);
 		System.out.println("Orientacoes: " + somaOrientacoes);
