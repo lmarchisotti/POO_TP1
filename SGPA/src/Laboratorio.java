@@ -551,47 +551,107 @@ public class Laboratorio {
 			
 			if (projeto.getStatus() == "Em andamento") {
 			
-				System.out.println("Orientador: ");
-				int orientador = ler.nextInt();
+				System.out.println("Orientador ou Pesquisador?");
+				System.out.println("1. Orientador");
+				System.out.println("2. Pesquisador");
+				System.out.println("0. Sair");
+				int op = ler.nextInt();
 				
-				if (listaColaboradores.contains((Colaborador)listaColaboradores.get(orientador))) {
-					
-					if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
+				switch ( op ) {
+					case 0:
+						break;
+					case 1:
 						
-						System.out.println("ID do Orientando: ");
-						int orientando = ler.nextInt();
-						System.out.println("Título: ");
-						String titulo = ler.next();
-						System.out.println("Conferência: ");
-						String conferencia = ler.next();
-						System.out.println("Ano");
-						int ano = ler.nextInt();
+						System.out.println("ID do orientador: ");
+						int orientador = ler.nextInt();
 						
-						Publicacao publicacao = new Publicacao();
+						if (orientador >= listaColaboradores.size()) {
+							
+							if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
+								
+								System.out.println("ID do Orientando: ");
+								int orientando = ler.nextInt();
+								
+								if (orientando >= listaColaboradores.size()) {
+								
+									System.out.println("Título: ");
+									String titulo = ler.next();
+									System.out.println("Conferência: ");
+									String conferencia = ler.next();
+									System.out.println("Ano");
+									int ano = ler.nextInt();
+									
+									Publicacao publicacao = new Publicacao();
+									
+									publicacao.setTitulo(titulo);
+									publicacao.setConferencia(conferencia);
+									publicacao.setAno(ano);
+									publicacao.setIdProjeto(idProjeto);
+									publicacao.setOrientador(orientador);
+									
+									Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
+									colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
+									
+									Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
+									colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
+									colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
+								
+								} else {
+									System.out.println("ID inexistente.");
+								}
+								
+							} else {
+								System.out.println("Este colaborador não é um Professor.");
+							}
+							
+						}else {
+							if (listaColaboradores.size() == 0) {
+								System.out.println("Não há colaboradores cadastrados.");
+							} else {
+								System.out.println("ID inexistente.");
+							}
+						}
 						
-						publicacao.setTitulo(titulo);
-						publicacao.setConferencia(conferencia);
-						publicacao.setAno(ano);
-						publicacao.setIdProjeto(idProjeto);
-						publicacao.setOrientador(orientador);
+						break;
+					case 2:
 						
-						Colaborador colaborador_orientando = (Colaborador)listaColaboradores.get(orientando);
-						colaborador_orientando.getProducaoAcademica().addListaPublicacoes(publicacao);
+						System.out.println("ID do pesquisador: ");
+						int pesquisador = ler.nextInt();
 						
-						Colaborador colaborador_orientador = (Colaborador)listaColaboradores.get(orientador);
-						colaborador_orientador.getProducaoAcademica().addListaPublicacoes(publicacao);
-						colaborador_orientador.getProducaoAcademica().addListaOrientacoes(orientando);
+						if (pesquisador >= listaColaboradores.size()) {
+							
+							if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
+								
+								System.out.println("Título: ");
+								String titulo = ler.next();
+								System.out.println("Conferência: ");
+								String conferencia = ler.next();
+								System.out.println("Ano");
+								int ano = ler.nextInt();
+								
+								Publicacao publicacao = new Publicacao();
+								
+								publicacao.setTitulo(titulo);
+								publicacao.setConferencia(conferencia);
+								publicacao.setAno(ano);
+								publicacao.setIdProjeto(idProjeto);
+								
+								Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
+								colaborador.getProducaoAcademica().addListaPublicacoes(publicacao);
+								
+							} else {
+								System.out.println("Este colaborador não é um Pesquisador.");
+							}
+							
+						}else {
+							if (listaColaboradores.size() == 0) {
+								System.out.println("Não há colaboradores cadastrados.");
+							} else {
+								System.out.println("ID inexistente.");
+							}
+						}
 						
-					} else {
-						System.out.println("Este colaborador não é um Professor.");
-					}
-					
-				}else {
-					if (listaColaboradores.size() == 0) {
-						System.out.println("Não há colaboradores cadastrados.");
-					} else {
-						System.out.println("ID inexistente.");
-					}
+						break;
 				}
 				
 			} else {
