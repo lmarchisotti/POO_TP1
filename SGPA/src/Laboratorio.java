@@ -589,7 +589,7 @@ public class Laboratorio {
 				
 			}
 			
-			if ((Colaborador)listaColaboradores.get(idColaborador) instanceof Professor) {
+			if (colaborador instanceof Professor) {
 				
 				System.out.println("Orientações: ");
 				for (int j = 0; j < colaborador.getProducaoAcademica().getListaOrientacoes().size(); j++) {
@@ -704,16 +704,23 @@ public class Laboratorio {
 		System.out.println("Número de projetos em elaboração: " + numProjetoAndamento);
 		System.out.println("Número de projetos em elaboração: " + numProjetoConluido);
 		
-		int somaProducaoAcademica = 0;
+		int somaPublicacoes = 0;
+		int somaOrientacoes = 0;
 		for (int i = 0; i < listaColaboradores.size(); i++) {
 			
 			Colaborador colaborador = (Colaborador)listaColaboradores.get(i);
 			
-			somaProducaoAcademica = somaProducaoAcademica + colaborador.getProducaoAcademica().getListaPublicacoes().size();
+			somaPublicacoes = somaPublicacoes + colaborador.getProducaoAcademica().getListaPublicacoes().size();
+			
+			if (colaborador instanceof Professor || colaborador instanceof Pesquisador) {
+				somaOrientacoes = somaOrientacoes + colaborador.getProducaoAcademica().getListaOrientacoes().size();
+			}
 			
 		}
 		
-		System.out.println("Número de produção acadêmica por tipo de produção: " + somaProducaoAcademica);
+		System.out.println("Número de produção acadêmica por tipo de produção.");
+		System.out.println("Publicações: " + somaPublicacoes);
+		System.out.println("Orientacoes: " + somaOrientacoes);
 		
 	}
 	
