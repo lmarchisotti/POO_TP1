@@ -35,10 +35,4 @@ public class Colaborador {
 		return producaoAcademica;
 	}
 	
-	public String imprimir() {
-		// Percorrer as listas e concatenar em uma string para exibir junto de nome e email.
-		
-		return "";
-	}
-	
 }
