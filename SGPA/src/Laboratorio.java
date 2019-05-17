@@ -128,14 +128,8 @@ public class Laboratorio {
 		System.out.println("Digite a ID do Colaborador: ");
 		int id = ler.nextInt();
 		
-		if (id >= listaColaboradores.size()) {
-			if (listaColaboradores.size() == 0) {
-				System.out.println("Não há colaboradores cadastrados.");
-			} else {
-				System.out.println("ID inexistente.");
-			}
-		} else {
-		
+		if (id < listaColaboradores.size()) {
+			
 			Colaborador colaborador = (Colaborador)listaColaboradores.get(id);
 			
 			if (listaColaboradores.contains(colaborador)) {
@@ -150,6 +144,12 @@ public class Laboratorio {
 				
 			}
 			
+		} else {
+			if (listaColaboradores.size() == 0) {
+				System.out.println("Não há colaboradores cadastrados.");
+			} else {
+				System.out.println("ID inexistente.");
+			}
 		}
 		
 	}
@@ -195,7 +195,7 @@ public class Laboratorio {
 		System.out.println("ID do Professor que será gerente deste projeto: ");
 		int professor_gerente = ler.nextInt();
 		
-		if (professor_gerente >= listaColaboradores.size()) {
+		if (professor_gerente < listaColaboradores.size()) {
 			
 			if ((Colaborador)listaColaboradores.get(professor_gerente) instanceof Professor) {
 				projeto.addParticipante(professor_gerente);
@@ -248,7 +248,7 @@ public class Laboratorio {
 		System.out.println("ID do Projeto: ");
 		int id = ler.nextInt();
 		
-		if (id >= listaProjetos.size()) {
+		if (id < listaProjetos.size()) {
 		
 			Projeto projeto = (Projeto)listaProjetos.get(id);
 			
@@ -389,7 +389,7 @@ public class Laboratorio {
 										System.out.println("ID do Graduando: ");
 										int graduando = ler.nextInt();
 										
-										if (graduando >= listaColaboradores.size()) {
+										if (graduando < listaColaboradores.size()) {
 											
 											int numProjetos = 0;
 											for (int i = 0; i < listaProjetos.size(); i++) {
@@ -400,18 +400,16 @@ public class Laboratorio {
 	 										}
 											
 											if (numProjetos < 2) {
-												if (listaColaboradores.contains((Colaborador)listaColaboradores.get(graduando))) {
-													if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
-														projeto.addParticipante(graduando);
-														
-														Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
-														colaborador.addListaProjetos(id);
-													} else {
-														System.out.println("Este colaborador não é um Graduando.");
-													}
+											
+												if ((Colaborador)listaColaboradores.get(graduando) instanceof Graduando) {
+													projeto.addParticipante(graduando);
+													
+													Colaborador colaborador = (Colaborador)listaColaboradores.get(graduando);
+													colaborador.addListaProjetos(id);
 												} else {
-													System.out.println("ID inexistente.");
+													System.out.println("Este colaborador não é um Graduando.");
 												}
+												
 											} else {
 												System.out.println("Este graduando já está em 2 projetos 'Em andamento'.");
 											}
@@ -420,7 +418,7 @@ public class Laboratorio {
 											if (listaProjetos.size() == 0) {
 												System.out.println("Não há colaboradores cadastrados.");
 											} else {
-												System.out.println("Projeto inexistente.");
+												System.out.println("ID inexistente.");
 											}
 										}
 										break;
@@ -428,25 +426,22 @@ public class Laboratorio {
 										System.out.println("ID do Mestrando: ");
 										int mestrando = ler.nextInt();
 										
-										if (mestrando >= listaColaboradores.size()) {
+										if (mestrando < listaColaboradores.size()) {
 										
-											if (listaColaboradores.contains((Colaborador)listaColaboradores.get(mestrando))) {
-												if ((Colaborador)listaColaboradores.get(mestrando) instanceof Mestrando) {
-													projeto.addParticipante(mestrando);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Mestrando.");
-												}
+											if ((Colaborador)listaColaboradores.get(mestrando) instanceof Mestrando) {
+												projeto.addParticipante(mestrando);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(mestrando);
+												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("ID inexistente.");
+												System.out.println("Este colaborador não é um Mestrando.");
 											}
+											
 										} else {
 											if (listaProjetos.size() == 0) {
 												System.out.println("Não há colaboradores cadastrados.");
 											} else {
-												System.out.println("Projeto inexistente.");
+												System.out.println("ID inexistente.");
 											}
 										}
 										break;
@@ -454,25 +449,22 @@ public class Laboratorio {
 										System.out.println("ID do Pesquisador: ");
 										int pesquisador = ler.nextInt();
 										
-										if (pesquisador >= listaColaboradores.size()) {
+										if (pesquisador < listaColaboradores.size()) {
 											
-											if (listaColaboradores.contains((Colaborador)listaColaboradores.get(pesquisador))) {
-												if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
-													projeto.addParticipante(pesquisador);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Pesquisador.");
-												}
+											if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
+												projeto.addParticipante(pesquisador);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(pesquisador);
+												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("ID inexistente.");
+												System.out.println("Este colaborador não é um Pesquisador.");
 											}
+												
 										} else {
 											if (listaProjetos.size() == 0) {
 												System.out.println("Não há colaboradores cadastrados.");
 											} else {
-												System.out.println("Projeto inexistente.");
+												System.out.println("ID inexistente.");
 											}
 										}
 										break;
@@ -480,25 +472,22 @@ public class Laboratorio {
 										System.out.println("ID do Professor: ");
 										int professor = ler.nextInt();
 										
-										if (professor >= listaColaboradores.size()) {
+										if (professor < listaColaboradores.size()) {
 											
-											if (listaColaboradores.contains((Colaborador)listaColaboradores.get(professor))) {
-												if ((Colaborador)listaColaboradores.get(professor) instanceof Professor) {
-													projeto.addParticipante(professor);
-													
-													Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
-													colaborador.addListaProjetos(id);
-												} else {
-													System.out.println("Este colaborador não é um Professor.");
-												}
+											if ((Colaborador)listaColaboradores.get(professor) instanceof Professor) {
+												projeto.addParticipante(professor);
+												
+												Colaborador colaborador = (Colaborador)listaColaboradores.get(professor);
+												colaborador.addListaProjetos(id);
 											} else {
-												System.out.println("ID inexistente.");
+												System.out.println("Este colaborador não é um Professor.");
 											}
+												
 										} else {
 											if (listaProjetos.size() == 0) {
 												System.out.println("Não há colaboradores cadastrados.");
 											} else {
-												System.out.println("Projeto inexistente.");
+												System.out.println("ID inexistente.");
 											}
 										}
 										break;
@@ -545,7 +534,7 @@ public class Laboratorio {
 		System.out.println("Digite a ID do projeto: ");
 		int idProjeto = ler.nextInt();
 		
-		if (idProjeto >= listaProjetos.size()) {
+		if (idProjeto < listaProjetos.size()) {
 			
 			Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
 			
@@ -564,14 +553,14 @@ public class Laboratorio {
 						System.out.println("ID do orientador: ");
 						int orientador = ler.nextInt();
 						
-						if (orientador >= listaColaboradores.size()) {
+						if (orientador < listaColaboradores.size()) {
 							
 							if ((Colaborador)listaColaboradores.get(orientador) instanceof Professor) {
 								
 								System.out.println("ID do Orientando: ");
 								int orientando = ler.nextInt();
 								
-								if (orientando >= listaColaboradores.size()) {
+								if (orientando < listaColaboradores.size()) {
 								
 									System.out.println("Título: ");
 									String titulo = ler.next();
@@ -617,7 +606,7 @@ public class Laboratorio {
 						System.out.println("ID do pesquisador: ");
 						int pesquisador = ler.nextInt();
 						
-						if (pesquisador >= listaColaboradores.size()) {
+						if (pesquisador < listaColaboradores.size()) {
 							
 							if ((Colaborador)listaColaboradores.get(pesquisador) instanceof Pesquisador) {
 								
@@ -672,7 +661,7 @@ public class Laboratorio {
 		System.out.println("Digite o ID do colaborador: ");
 		int idColaborador = ler.nextInt();
 		
-		if (idColaborador >= listaColaboradores.size()) {
+		if (idColaborador < listaColaboradores.size()) {
 		
 			Colaborador colaborador = (Colaborador)listaColaboradores.get(idColaborador);
 			
@@ -745,7 +734,7 @@ public class Laboratorio {
 		System.out.println("Digite o ID do projeto: ");
 		int idProjeto = ler.nextInt();
 		
-		if (idProjeto >= listaProjetos.size()) {
+		if (idProjeto < listaProjetos.size()) {
 		
 			Projeto projeto = (Projeto)listaProjetos.get(idProjeto);
 
