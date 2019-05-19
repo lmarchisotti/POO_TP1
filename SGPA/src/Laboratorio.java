@@ -1,4 +1,3 @@
-// import java.io.Console;
 import java.util.*;
 
 public class Laboratorio {
@@ -35,7 +34,6 @@ public class Laboratorio {
 	        System.out.println("Escolha uma opcao: ");
 	        
 	        opcao = ler.nextInt();
-	        // opcao = Integer.parseInt(Console.readLine());
 
 	        switch ( opcao ) {
 	            case 1 :
@@ -275,7 +273,7 @@ public class Laboratorio {
 						System.out.println("Nome: " + colaborador.getNome());
 					}
 					
-					System.out.println("\n");
+					System.out.println(" ");
 					System.out.println("O que deseja modificar?");
 					System.out.println("1. Titulo");
 					System.out.println("2. Objetivo");
@@ -324,13 +322,13 @@ public class Laboratorio {
 							System.out.println("Data inicio: ");
 							String data_ini = ler.next();
 							
-							projeto.setData_ini(data_ini); // Converter string data, para tipo data
+							projeto.setData_ini(data_ini);
 							break;
 						case 7:
 							System.out.println("Data termino: ");
 							String data_fim = ler.next();
 							
-							projeto.setData_fim(data_fim); // Converter string data, para tipo data
+							projeto.setData_fim(data_fim);
 							break;
 						case 8:
 							// Deve testar se todos os campos estão preenchidos antes de alterar
@@ -363,10 +361,9 @@ public class Laboratorio {
 												verifica = 0;
 											}
 										}
-										
-										if (verifica == 0) {
-											System.out.println("Nao ha publicações associadas ao projeto.");
-										}
+									}
+									if (verifica == 0) {
+										System.out.println("Nao ha publicações associadas ao projeto.");
 									}
 								}
 								
@@ -689,10 +686,12 @@ public class Laboratorio {
 										"Valor financiado: " + projeto.getValor_financiado() + "\n" +
 										"Data inicio: " + projeto.getData_ini() + "\n" +
 										"Data termino: " + projeto.getData_fim() + "\n" +
-										"Status: " + projeto.getStatus() + "\n");
+										"Status: " + projeto.getStatus());
+					System.out.println("--------------------------------");
 					
 				}
 				
+				System.out.println(" ");
 				System.out.println("PRODUCAO ACADEMICA");
 				System.out.println("::Publicacoes::");
 				for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
@@ -709,9 +708,12 @@ public class Laboratorio {
 						System.out.println("Orientador: " + orientador.getNome());
 					}
 					
+					System.out.println("--------------------------------");
+					
 				}
 				
 				if (colaborador instanceof Professor) {
+					System.out.println(" ");
 					System.out.println("::Orientacoes::");
 					for (int k = 0; k < colaborador.getProducaoAcademica().getListaOrientacoes().size(); k++) {
 						int idOrientando = (int)colaborador.getProducaoAcademica().getListaOrientacoes().get(k);
@@ -765,18 +767,21 @@ public class Laboratorio {
 				for (int j = 0; j < colaborador.getProducaoAcademica().getListaPublicacoes().size(); j++) {
 					
 					Publicacao publicacao = (Publicacao)colaborador.getProducaoAcademica().getListaPublicacoes().get(j);
-					System.out.println("Titulo: " + publicacao.getTitulo() + "\n" +
-										"Conferencia: " + publicacao.getConferencia() + "\n" +
-										"Ano: " + publicacao.getAno());
 					Projeto tituloProjeto = (Projeto)listaProjetos.get((int)publicacao.getIdProjeto());
-					System.out.println("Projeto: " + tituloProjeto.getTitulo());
-					
-					if ((Colaborador)listaColaboradores.get(participante) instanceof Alunos) {
-						Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
-						System.out.println("Orientador: " + orientador.getNome());
+					if (projeto.getTitulo() == tituloProjeto.getTitulo()) {
+						System.out.println("Titulo: " + publicacao.getTitulo() + "\n" +
+								"Conferencia: " + publicacao.getConferencia() + "\n" +
+								"Ano: " + publicacao.getAno());
+						System.out.println("Projeto: " + tituloProjeto.getTitulo());
+						
+						if ((Colaborador)listaColaboradores.get(participante) instanceof Alunos) {
+							Colaborador orientador = (Colaborador)listaColaboradores.get((int)publicacao.getOrientador());					
+							System.out.println("Orientador: " + orientador.getNome());
+						}
+						
+						System.out.println("--------------------------------");
 					}
 					
-					System.out.println("\n");
 				}
 				
 				if ((Colaborador)listaColaboradores.get(participante) instanceof Professor) {
@@ -845,7 +850,7 @@ public class Laboratorio {
 			
 		}
 		
-		System.out.println("\n");
+		System.out.println(" ");
 		System.out.println("Numero de producao academica por tipo de producao.");
 		System.out.println("Publicacoes: " + somaPublicacoes);
 		System.out.println("Orientacoes: " + somaOrientacoes);
